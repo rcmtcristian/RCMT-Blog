@@ -1,0 +1,26 @@
+{
+  "name": "411ty-blog-mnml",
+  "version": "1.0.0",
+  "main": "..js",
+  "scripts": {
+    "build": "eleventy && npm run sass",
+    "serve": "concurrently 'eleventy --serve' 'npm run sass:watch'",
+    "sass": "node-sass --output  _site/styles/ styles/",
+    "sass:watch": "npm run sass && npm run sass -- -w",
+    "clean": "rm -rf _site"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "concurrently": "^7.6.0",
+    "liquid": "^5.1.1",
+    "liquidjs": "^10.6.1",
+    "node-sass": "^8.0.0",
+    "sass": "^1.59.2"
+  },
+  "description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/6f09e1c5-14d2-47e1-be55-eeb90ffd46dd/deploy-status)](https://app.netlify.com/sites/eleventy-blog-mnml/deploys)",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0"
+  }
+}

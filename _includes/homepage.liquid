@@ -10,12 +10,15 @@
       crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/qke7jpy.css">
   </head>
   <body>
     <div class="header">
       <a href="/" class="logo">Poline</a>
     </div>
 
+ 
+    </section>
 
     <div data-barba="wrapper">
       <div data-barba="container" data-barba-namespace="home">
@@ -25,16 +28,28 @@
             <p>
               Journeying Through the World of Interactive Web Graphics: Reflections on JavaScript, TypeScript, Three.js Concepts and Beyond
             </p>
-            <!-- <a href="home.html" class="btn">Enter</a> -->
           </div>
         </div>
+        <div>   
+          <section class=" temp">
+      {% for post in collections.posts reversed limit: 1  %}
+        <a href="{{ post.url }}">
+          <div class="first">
+            <img src="/img/{{post.data.image}}" alt="">
+            <section class="extra">
+              <h2>{{ post.data.title }}</h2>
+              <p>{{ post.data.description }}</p>
+            {% endfor %}
+          </section>
+        </div>
 
-        <div></div>
+      </a>
+</div>
         <div asscroll-container>
           <div class="scroll-wrap">
+
             <!-- BEGIN content -->
             <div class="content">
-
               {% for post in collections.posts reversed %}
                 <!-- BEGIN item -->
                 <a href="{{ post.url }}" class="item">
@@ -55,6 +70,9 @@
 
       </div>
     </div>
+
+
+
     <!-- end barba -->
 
     <div class="curtain"></div>

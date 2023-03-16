@@ -1,7 +1,7 @@
 ---
 title: The Majestic Mountains
 externalLink: https://en.wikipedia.org/wiki/BoJack_Horseman
-image: 4.jpg
+image: tokyo.gif
 description: lorem  ipsum dolor sit amet
 ---
 

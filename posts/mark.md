@@ -1,238 +1,227 @@
 ---
-title: mark
-image: 3.gif
-description: The Wonder of jest
+title: Raymarching Material 101 in three.js
+image: ray.jpg
+description: Did you ever go to ShaderToy and be blown away by the amazing stuff people are able to make with shaders?
 ---
 
-**Advertisement :)**
+Written by Adam N. on Mar 9th, 2023
 
-- **[pica](https://nodeca.github.io/pica/demo/)** - high quality and fast image
-  resize in browser.
-- **[babelfish](https://github.com/nodeca/babelfish/)** - developer friendly
-  i18n with plurals support and easy syntax.
+# Abstract
 
-You will like those projects!
+Did you ever go to ShaderToy and be blown away by the amazing stuff people are able to make with shaders? A lot of them use a technique called raymarching. Today, we will see how we can use some cool shaders from ShaderToy or ones that we developed ourselves in the context of three.js
 
----
+Disclaimer: I am not a raymarching expert, I just learnt the basic stuffs to be able to make it work in the three.js ecosystem. If you do not know what is raymarching in details, I recommend you TheArtOfCode Youtube Channel or Michael Walczyk blog for more details about the theory of the raymarching technique. Here we will just see the integration part.
 
-# h1 Heading 8-)
+Feel free to contact me on twitter if you liked or disliked the post, if you found some of the things blurry, some typos, ...
 
-## h2 Heading
+Thank you in advance. ✨
 
-### h3 Heading
+# Process introduction 📐
 
-#### h4 Heading
+## Reminder: What is raymarching in first place?
 
-##### h5 Heading
+It's a technique that involves view rays extrapolated from the camera, along which we are going to march forward, to see if there is intersections with specific surfaces. These specific surfaces are defined by SDF (a.k.a. Signed distance functions). A ray is composed of two properties: An origin (the starting point) and a direction. The raymarching algorithm will take in input these two components.
 
-###### h6 Heading
+If all of this is really new to you, you may have trouble to follow along, because I don't go in depth about the raymarching theory. Go back to the abstract and follow the links I put for you !
 
-## Horizontal Rules
+## How to get the rays properties?
 
----
+Let's put aside how we get the rays for a moment, and remember about the rendering pipeline.
 
----
+First, our vertex shader will run on each vertex of our primitive. Then, down the rendering pipeline, we get a lot of fragments. On each fragment, the fragment shader will be runned, with in inputs some interpolated values coming from the vertex shader.
 
----
+![image](https://cdn.devdojo.com/images/march2023/GZO0M.png)
 
-## Typographic replacements
+in each fragment, we will get a different ray, that we will follow along. Then, we will test intersections inside the raymarching loop, and determine the pixel color that we need to render in this direction.
 
-Enable typographer option to see result.
+The plan to make our raymarcher work in the context of three.js is to calculate each ray in the vertex shader from the real three.js camera. Then, pass down to the fragment shader through varying the ray origin and the ray direction.
 
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+**Reminder: The fragment shader will interpolate the values passed in varying. For the ray origin, it is the camera position for everyone, so it will be a constant value. For the ray direction, it will be interpolated from the calculation done in the vertex shader. Each fragment will have a specific ray direction. It is exactly what we need to make the raymarcher work in our context ! **
 
-test.. test... test..... test?..... test!....
+A little drawing could help no ?
 
-!!!!!! ???? ,, -- ---
+![image](https://cdn.devdojo.com/images/march2023/ray%20from%20camera.png)
 
-"Smartypants, double quotes" and 'single quotes'
+Each arrow you see on the picture is a ray. It is basically what will happen in the vertex shader. Each arrow will be the result of the vertex shader calculation. Then each arrow will be interpolated before feeding the fragment shader.
 
-## Emphasis
+The formulas for the ray is very simple: The ray origin is the camera world position or the vertex local position depending of the raymarching effect you want. Taking the local vertex position will ensure that you have the same effect even if you move the sphere around in the scene. Taking the camera world position will make the effect inside different depending on the position of the object in the world space. There is no right or wrong, just matter of the effect you want to be performed in the sphere. The ray direction is given by rayDirection = normalize(vertexWorldPosition - cameraWorldPosition). Just make sure that you have every coordinates in the same space. We normalize the vector, to have a unit length.
 
-**This is bold text**
+# Implementation ⚙️
 
-**This is bold text**
-
-_This is italic text_
-
-_This is italic text_
-
-~~Strikethrough~~
-
-## Blockquotes
-
-> Blockquotes can also be nested...
->
-> > ...by using additional greater-than signs right next to each other...
-> >
-> > > ...or with spaces between arrows.
-
-## Lists
-
-Unordered
-
-- Create a list by starting a line with `+`, `-`, or `*`
-- Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    - Ac tristique libero volutpat at
-    * Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-- Very easy!
-
-Ordered
-
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-4. You can use sequential numbers...
-5. ...or keep all the numbers as `1.`
-
-Start numbering with offset:
-
-57. foo
-1. bar
-
-## Code
-
-Inline `code`
-
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-Block code "fences"
+## Setting up the material
 
 ```
-Sample text here...
+const material = new THREE.ShaderMaterial({
+vertexShader: vertexShader,
+fragmentShader: fragmentShader,
+uniforms: {
+uResolution: {
+value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+},
+uTime: {
+value: 0,
+},
+},
+});
+
+    const sphere = new THREE.Mesh(
+      new THREE.SphereGeometry(2, 32, 32),
+      material
+    );
+    sphere.position.setY(2);
+
+    this.scene.add(sphere);
 ```
 
-Syntax highlighting
+Don't forget to add the update part of the uTime uniforms in the render loop: It should look like this:
 
-```js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
+```
+material.uniforms.uTime.value = elapsedTime;
 ```
 
-## Tables
+# Vertex shader
 
-| Option | Description                                                               |
-| ------ | ------------------------------------------------------------------------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default.    |
-| ext    | extension to be used for dest files.                                      |
+```
+varying vec3 vPosition;
+varying vec3 vDirection;
+varying vec3 vNormal;
+void main() {
+vec3 worldPosition = (modelMatrix _ vec4(position, 1.0)).xyz;
+vDirection = normalize(worldPosition - cameraPosition);
+vPosition = position;
+vNormal = normal.xyz;
+gl_Position = projectionMatrix _ viewMatrix _ modelMatrix _ vec4(position, 1.0);
+}
+```
 
-Right aligned columns
+First we calculate the world position of the vertex by multiplying the modelMatrix to the vertex coordinates.
 
-| Option |                                                               Description |
-| -----: | ------------------------------------------------------------------------: |
-|   data | path to data files to supply the data that will be passed into templates. |
-| engine |    engine to be used for processing templates. Handlebars is the default. |
-|    ext |                                      extension to be used for dest files. |
+Then we prepare the varyings that will be interpolated before the fragment shader. vDirection is the ray direction from the camera to the vertex world position like we talked about in the previous section. vPosition is the ray origin. It is the position of the vertex in local space so we ensure that the effect is local to the sphere, and not depending on the position in world space or the camera in world space.
 
-## Links
+Basically, it is what we are trying to build.
 
-[link text](http://dev.nodeca.com)
+![image](https://cdn.devdojo.com/images/march2023/raymarching%20explanation.png)
 
-[link with title](http://nodeca.github.io/pica/demo/ "title text!")
+# Raymarching algorithm
 
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+We will use TheArtOfCode raymarcher for it. Like I said, if you are not familiar with the code of the raymarching algorithm, check out his videos. Here, a part of the fragment shader.
 
-## Images
+```
+uniform float uTime;
+uniform vec2 uResolution;
 
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+varying vec3 vPosition;
+varying vec3 vDirection;
+varying vec3 vNormal;
 
-Like links, Images also have a footnote style syntax
+#define MAX_STEPS 100
+#define MAX_DISTANCE 100.
+#define SURFACE_DISTANCE .01
 
-![Alt text][id]
+float smin( float a, float b, float k ) {
+float h = clamp( 0.5+0.5*(b-a)/k, 0., 1. );
+return mix( b, a, h ) - k*h\*(1.0-h);
+}
 
-With a reference later in the document defining the URL location:
+float getDistance(vec3 currentPosition) {
+vec4 sphere = vec4(0, 3, 3, 0.5);
 
-[id]: https://octodex.github.com/images/dojocat.jpg "The Dojocat"
+    float sphereDistance = length(currentPosition - sphere.xyz) - sphere.w; // sphere.w === radius of the sphere
 
-## Plugins
+    float planeDistance = dot(vec3(currentPosition.x, currentPosition.y - 2. - sin(currentPosition.x + uTime * 0.002) * 0.6 , currentPosition.z), normalize(vec3(0,1,0)));
+    //float planeDistance = currentPosition.y; //Plane is ground position so it is minus 0
+    float safeDistance = smin(sphereDistance, planeDistance, 0.7);
 
-The killer feature of `markdown-it` is very effective support of
-[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
+    return safeDistance;
 
-### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
+}
+vec3 getNormal(vec3 currentPosition) {
+float d = getDistance(currentPosition);
 
-> Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
->
-> Shortcuts (emoticons): :-) :-( 8-) ;)
+    vec2 epsilon = vec2(.01, 0);
 
-see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
+    vec3 n = d - vec3(
+        getDistance(currentPosition - epsilon.xyy),
+        getDistance(currentPosition - epsilon.yxy),
+        getDistance(currentPosition - epsilon.yyx)
+    );
 
-### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
+    return normalize(n);
 
-- 19^th^
-- H~2~O
+}
 
-### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
+float getLight(vec3 currentPosition) {
+vec3 lightPosition = vec3(0,5,6);
+lightPosition.xz += vec2(sin(uTime _ 0.001 ), cos(uTime _ 0.001)) \* 2.;
 
-++Inserted text++
+    vec3 lightVector = normalize(lightPosition - currentPosition);
+    vec3 normalVector = getNormal(currentPosition);
 
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
 
-==Marked text==
+    float diffuseLighting = clamp(dot(normalVector, lightVector),0.,1.);
 
-### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
+    float d = rayMarch(currentPosition + normalVector * SURFACE_DISTANCE * 2., lightVector);
+    //If there is an hit point and the hit point distance is shorter than the distance current point to the light, then we are occluded by the object we hit.
+    //The light is behind the object.
+    //Be careful, we need to kick out the point before the raymarching that is colliding with the plane, because we
+    //will go out of the raymarch loop too soon due to the collision with the plane and the min(dPlane, dSphere)
+    //So we add a little quantity along the normal to have the point just above and continue the raymarch
 
-Footnote 1 link[^first].
+    if(d < length(lightPosition - currentPosition)) diffuseLighting *= .1;
 
-Footnote 2 link[^second].
+    return diffuseLighting;
 
-Inline footnote^[Text of inline footnote] definition.
+}
 
-Duplicated footnote reference[^second].
+float rayMarch(vec3 rayOrigin, vec3 rayDirection) {
+float distanceOrigin = 0.;
 
-[^first]: Footnote **can have markup**
+    for(int i=0; i< MAX_STEPS; i++) {
+        vec3 currentPosition = rayOrigin + rayDirection * distanceOrigin;
+        float distanceScene = getDistance(currentPosition);
+        distanceOrigin += distanceScene;
+        if (distanceOrigin > MAX_DISTANCE || distanceScene < SURFACE_DISTANCE) break;
+    }
 
-    and multiple paragraphs.
+    return distanceOrigin;
 
-[^second]: Footnote text.
+}
+```
 
-### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
+# Wire everything in the main of the fragment shader
 
-Term 1
+```
+void main()
+{
+vec3 rayOrigin = vPosition;
+vec3 rayDirection = normalize(vDirection);
 
-: Definition 1
-with lazy continuation.
+    float d = rayMarch(rayOrigin, rayDirection);
 
-Term 2 with _inline markup_
+    vec3 color = vec3(0);
 
-: Definition 2
+    vec3 currentPosition = rayOrigin + rayDirection * d;
 
-        { some code, part of Definition 2 }
+    float diffuseColor = getLight(currentPosition);
 
-    Third paragraph of definition 2.
+    color = vec3(diffuseColor);
 
-_Compact style:_
+    // Output to screen
+    gl_FragColor = vec4(color,1.0);
 
-Term 1
-~ Definition 1
+}
+```
 
-Term 2
-~ Definition 2a
-~ Definition 2b
+Basically we are calculating a distance in a direction from an origin point. We are marching forward until we hit something in our abstract space, or until we are pass the maximum distance. We save this distance d.
 
-### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
+We can then calculate the current position that we marched to by doing rayOrigin + rayDirection \* d (We marched for a distance d along the ray direction, starting from the rayOrigin). We then ask for the light at the current position, which will be our color.
 
-This is HTML abbreviation example.
+We do this for every ray generated by every fragment shader running. From there, we can determine every fragment color, which determine every pixel color for the mesh.
 
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+Sandbox
+Note: I added some fresnel to have this glass effect on the sphere so it feels like the raymarched scene is contained in a glass sphere
 
-\*[HTML]: Hyper Text Markup Language
+What to take off from this blog post ?
+You can go on ShaderToy to experiment on raymarching algorithm. I did the experimentation with a cool sea shader I found here:
 
-### [Custom containers](https://github.com/markdown-it/markdown-it-container)
-
-::: warning
-_here be dragons_
-:::
+All you need to do is seek for the raymarching algorithm. Replace the main function by our main, with the calculation of the ray origin and ray direction relative to the three.js camera. And you can get this type of cool effect on your three.js sphere !

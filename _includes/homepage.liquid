@@ -12,9 +12,11 @@
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="https://use.typekit.net/qke7jpy.css">
   </head>
-  <body>
+  <body >
+    <div class="bg"></div>
     <div class="header">
-      <a href="/" class="logo">Poline</a>
+      <a href="/" class="logo">RCMT</a>
+      <img src="" alt="">
     </div>
 
  
@@ -24,27 +26,14 @@
       <div data-barba="container" data-barba-namespace="home">
         <div class="welcome">
           <div class="welcome__content">
-            <h1>P</h1>
+            <h1>R</h1>
+          
             <p>
               Journeying Through the World of Interactive Web Graphics: Reflections on JavaScript, TypeScript, Three.js Concepts and Beyond
             </p>
           </div>
         </div>
-        <div>   
-          <section class=" temp">
-      {% for post in collections.posts reversed limit: 1  %}
-        <a href="{{ post.url }}">
-          <div class="first">
-            <img src="/img/{{post.data.image}}" alt="">
-            <section class="extra">
-              <h2>{{ post.data.title }}</h2>
-              <p>{{ post.data.description }}</p>
-            {% endfor %}
-          </section>
-        </div>
-
-      </a>
-</div>
+      
         <div asscroll-container>
           <div class="scroll-wrap">
 
@@ -66,6 +55,42 @@
             </div>
             <!-- END content -->
           </div>
+          <section class="info">
+            <section class="">
+             <h4>Connect</h4>
+             <br>
+             <p>I'm currently looking for new opportunities, so feel free to reach out if
+you'd like. <br> I'm always happy to hear from folks.</p>
+            </section>
+           
+            <section>
+              <ul>
+                <li class="contacts"> 
+                  <h5>Twitter/X</h5>
+                  <div>
+                    <div >
+                      <a  class="accent" href="https://twitter.com/rcmtcristian">rcmtcristian</a></div>
+                  </div>
+                </li>
+                <li class="contacts"> 
+                  <h5>Github</h5>
+                  <div>
+                    <div >
+                      <a  class="accent" href="https://github.com/rcmtcristian"> @rcmtcristian</a></div>
+                  </div>
+                </li>
+                <li class="contacts"> 
+                  <h5>Email</h5>
+                  <div>
+                    <div >
+                      <a  class="accent" href="mailto:rcmtcristian@gmail.com"">rcmtcristian@gmail.com</a></div>
+                  </div>
+                </li>
+               
+                
+              </ul>
+            </section>
+          </section>
         </div>
 
       </div>

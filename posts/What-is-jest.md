@@ -1,7 +1,7 @@
 ---
-title: What is Jest The Wonder of Jest
+title: What is Jest 
 image: 3.gif
-description: The Wonder of jest
+description: The Wonders of TDD
 ---
 
 [Jest](https://jestjs.io/) is a popular test framework for JavaScript that allows developers to build unit tests, work with custom matchers, create mocks, and check snapshots of visual components in a simple and accessible manner. It is a testing framework based on [Jasmine](https://jasmine.github.io/), providing an assert library, a test runner, and support for various testing functionalities. Although originally developed in the context of [React](https://reactjs.org/), Jest is a versatile testing framework that can be used in any JavaScript project.
@@ -15,6 +15,10 @@ Jest was developed by the Facebook team and, while it originated in the React ec
 During a volunteering experience in the Equity Cohort program, I had the opportunity to learn and become familiar with Jest. Before that, I had not extensively tested my code (unless we count Codewars or Leetcode challenges), and I found the process to be more intricate than I had initially thought. However, using Jest provided me with a new perspective on software development. It instilled a more cautious mindset, emphasizing the importance of testing to ensure code meets expectations and adheres to desired standards. Properly testing code is a crucial strategy for minimizing the possibility of errors in production that could potentially break the application or compromise product quality.
 
 In the fast-paced tech industry, where accelerated deadlines are common, users can be unforgiving of mistakes. Therefore, while writing unit tests might seem like a time-consuming task, it actually facilitates maintenance and guarantees that your code behaves as expected in the long run.
+
+## Test-Driven Development (TDD) with Jest
+
+Test-Driven Development (TDD) is a software development approach that emphasizes writing tests before writing the actual code. In TDD, developers first create test cases that define the desired behavior of the code. These tests initially fail since the code implementation is yet to be written. The developer then writes the code to make these tests pass, ensuring that the code meets the specified requirements. The process is iterative, with developers continuously writing tests, implementing code, and running tests to achieve the desired functionality.
 
 ### If you are still not convinced, here are 4 reasons why testing is essential
 

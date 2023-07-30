@@ -3,7 +3,7 @@
   padding: 0;
 }
 body {
-  background: #000;
+  background: #111115;
   font-family: "pangramregular", serif, Coustard;
   font-weight: 400;
   color: #ccc;
@@ -56,6 +56,7 @@ body {
   animation: bg-animation 0.2s infinite;
   opacity: 0.1;
   visibility: visible;
+  z-index: -1;
 }
 
 .logo-Image {

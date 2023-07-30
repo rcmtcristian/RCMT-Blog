@@ -4,7 +4,6 @@ title: The Banana Rule Unleashing the Power of UX/UI Design
 image: 7.png
 description: UX/UI
 ---
-# The Banana Rule: Unleashing the Power of UX/UI Design
 
 In the vast landscape of digital design, creating an intuitive user experience is paramount. As designers, our goal is to ensure that users can effortlessly understand and navigate through websites and applications. That's where the power of the "banana rule" in UX/UI design comes into play. This simple yet profound principle can revolutionize the way we approach design, leading to products that are not only visually appealing but also user-friendly and engaging. Join me as we delve into the depths of the banana rule and unlock its potential.
 
@@ -57,3 +56,5 @@ In the ever-evolving digital landscape, the banana rule serves as a guiding ligh
 ## Overall Takeaway
 
 The banana rule in UX/UI design emphasizes the importance of clear communication, hierarchy, and navigation in creating intuitive and user-friendly websites or applications. By following this principle, designers can enhance user engagement, satisfaction, and ultimately increase the chances of user loyalty.
+
+PS: The thumbnail is from a test project I made awhile ago. You can see check it out here, it's [Bananas](https://rise-and-shine.vercel.app/)

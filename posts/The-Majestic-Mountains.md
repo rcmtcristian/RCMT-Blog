@@ -89,29 +89,6 @@ Japan
 
 2007
 
-2012
-
-2008
-
-2013
-
-2009
-
-2015
-via web.archive.org
-America
-
-2001
-
-2012
-
-2005
-
-2012
-
-2008
-
-2015
 via webdesignmuseum.org
 Thus, it’s clear that the introduction of the iPhone/smartphones didn’t impact Japan in the same way as the rest of the world (or at least, the English-speaking world).
 

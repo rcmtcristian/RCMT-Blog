@@ -3,7 +3,6 @@ title: Demystifying Data Structures A Beginner-Friendly Guided
 image: squares.gif
 description: DSA
 ---
-# Demystifying Data Structures A Beginner-Friendly Guided
 
 Data structures are the backbone of problem-solving and acing programming interviews. If you're new to the world of computer science, don't worry! Understanding data structures might seem daunting at first, but with a little guidance, it can be simplified for beginners like you.
 
@@ -612,7 +611,7 @@ These are some of the most commonly used algorithms that every programmer should
 - Dijkstra's algorithm is used to find the shortest path between nodes in a graph.
 - It uses a priority queue to keep track of the nodes with the shortest distance from the starting node.
 
-### Conclusion
+## Conclusion
 
 Data structures are the building blocks of efficient algorithms and problem-solving in computer science. While they might appear complex initially, with practice and the right guidance, you'll soon find yourself embracing their power and using them to create elegant and efficient solutions.
 

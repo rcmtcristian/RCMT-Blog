@@ -59,7 +59,7 @@ body {
   z-index: 99999; /* Make sure the div is on top of other content */
 }
 
-@media only screen and (max-width: 90px) {
+@media only screen and (max-width: 980px) {
   #workInProgress {
     display: block;
   }

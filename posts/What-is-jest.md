@@ -1,10 +1,15 @@
 ---
-title: What is Jest 
+title: What is Jest
 image: 3.gif
 description: The Wonders of TDD
 ---
 
 [Jest](https://jestjs.io/) is a popular test framework for JavaScript that allows developers to build unit tests, work with custom matchers, create mocks, and check snapshots of visual components in a simple and accessible manner. It is a testing framework based on [Jasmine](https://jasmine.github.io/), providing an assert library, a test runner, and support for various testing functionalities. Although originally developed in the context of [React](https://reactjs.org/), Jest is a versatile testing framework that can be used in any JavaScript project.
+
+<!-- ![image alt text](http://blog.302chanwoo.com/wp-content/uploads/2017/12/302chanwoo_flower_main.jpg)
+![Imgur](https://i.imgur.com/uSZrE6I.gif)
+
+[![image alt text](https://content.codecademy.com/courses/learn-cpp/community-challenge/highfive.gif)](https://content.codecademy.com/courses/learn-cpp/community-challenge/highfive.gif) -->
 
 ## Who created Jest
 
@@ -19,8 +24,11 @@ In the fast-paced tech industry, where accelerated deadlines are common, users c
 ## Test-Driven Development (TDD) with Jest
 
 Test-Driven Development (TDD) is a software development approach that emphasizes writing tests before writing the actual code. In TDD, developers first create test cases that define the desired behavior of the code. These tests initially fail since the code implementation is yet to be written. The developer then writes the code to make these tests pass, ensuring that the code meets the specified requirements. The process is iterative, with developers continuously writing tests, implementing code, and running tests to achieve the desired functionality.
+If you want to dive deeper into the sea of TDD here's a good article on it [What is Test Driven Development](https://www.guru99.com/test-driven-development.html)
 
-### If you are still not convinced, here are 4 reasons why testing is essential
+![code](https://i.imgur.com/rxVGFYk.png)
+
+## If you are still not convinced, here are 4 reasons why testing is essential
 
 1. **Unit Testing Saves Time...and Money**: By writing unit tests, you can identify potential bugs early and fix them immediately, avoiding more complex issues later in the development process.
 
@@ -43,19 +51,20 @@ These types of questions can cover a broad spectrum, and they are essential to e
 
 We can apply these definitions to the following questions for our example function `isUpperCase`:
 
-1. What happens if you pass a word in uppercase?
-2. What happens if you pass a lowercase word to it?
-3. What happens if you pass it a mixed word (upper and lower case)?
-4. What happens if you pass it a number instead of a string?
-5. What happens if you pass it a boolean instead of a string?
+- What happens if you pass a word in uppercase?
+- What happens if you pass a lowercase word to it?
+- What happens if you pass it a mixed word (upper and lower case)?
+- What happens if you pass it a number instead of a string?
+- What happens if you pass it a boolean instead of a string?
+  <br>
 
-#### Testing Failures
+## Testing Failures
 
 Rather than just testing the ideal scenarios, it's better to build tests that try to break your functions. By testing various unexpected inputs and edge cases, you can discover potential bugs and vulnerabilities early in the development process.
 
 # Now, Let's Dive into Example Code
 
-### How to Structure and Write Tests for Your Function
+## How to Structure and Write Tests for Your Function
 
 Before we proceed with the example, make sure you have [Node.js](https://nodejs.org/en/download/) installed. Next, you can add Jest to your project by running the following command in your terminal:
 
@@ -75,7 +84,15 @@ Now, let's look at an example using the classic FizzBuzz problem, which is often
 
 ### Our Function: fizzbuzz.js
 
-```js
+# ![code](https://i.imgur.com/xvK1m5y.png)
+
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
 function fizzBuzz(number) {
   if (number % 3 == 0 && number % 5 == 0) {
     return "FizzBuzz";
@@ -87,11 +104,12 @@ function fizzBuzz(number) {
     return number;
   }
 }
-
 module.exports = fizzBuzz;
-```
-
+</samp></pre>
+</details>
+<br>
 ## We’ll explain Jest’s syntax in more detail later. For now, understand that we’re verifying that
+<br>
 
 - Passing 1 should return the number 1.
 - Passing 7 should return the number 7.
@@ -99,35 +117,42 @@ module.exports = fizzBuzz;
 - Passing a number divisible by 5 should result in "Buzz".
 - Passing a number divisible by both 3 and 5 should result in "FizzBuzz".
 
+<br>
+
 ### Our Test: fizzbuzz.test.js
 
 This is what your test file should look like. Note that the file name should contain the word "test" to follow Jest's naming convention for test files. In this file, we will conduct experiments and ensure our code functions correctly.
 
-```js
-const fizzbuzz = require("./fizzbuzz");
+# ![code](https://i.imgur.com/CF4USwT.png)
 
+ <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
+const fizzbuzz = require("./fizzbuzz");
 describe("FizzBuzz Test", () => {
   test("returns 1 for the number 1", () => {
     expect(fizzbuzz(1)).toEqual(1);
   });
-
   test("returns 7 for the number 7", () => {
     expect(fizzbuzz(7)).toEqual(7);
   });
-
   test('returns "Fizz" for the number 3', () => {
     expect(fizzbuzz(3)).toEqual("Fizz");
   });
-
   test('returns "Buzz" for the number 5', () => {
     expect(fizzbuzz(5)).toEqual("Buzz");
   });
-
   test('returns "FizzBuzz" for the number 15', () => {
     expect(fizzbuzz(15)).toEqual("FizzBuzz");
   });
 });
-```
+</samp></pre>
+</details>
+<br>
 
 ### Running the Test
 
@@ -139,21 +164,29 @@ npm test
 
 You should see the following result:
 
-```
+# ![code](https://i.imgur.com/eEUEgps.png)
+
+   <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
 √ returns 1 for the number 1 (2 ms)
 √ returns 7 for the number 7
 √ returns "Fizz" for the number 3 (1 ms)
 √ returns "Buzz" for the number 5
 √ returns "FizzBuzz" for the number 15
-
 Test Suites: 1 passed,
-
  1 total
 Tests: 5 passed, 5 total
 Snapshots: 0 total
 Time: 0.479 s
 Ran all test suites.
-```
+</samp></pre>
+</details>
+<br>
 
 ### Analyzing Test Coverage
 
@@ -179,6 +212,7 @@ All files    |     100 |      100 |     100 |     100 |
 Additionally, a folder containing multiple files, including an index.html file, will be created, providing a comprehensive breakdown of the code coverage.
 
 With Jest, you can ensure that your code is thoroughly tested, making your applications more robust and reliable, which ultimately leads to better software development. Happy testing!
+
 ## Conclusion
 
 In conclusion, Jest proves to be a powerful and popular test framework for JavaScript, offering developers a comprehensive testing solution with its simplicity and accessibility. It excels in writing unit tests, working with custom matchers, creating mocks, and checking snapshots of visual components. Developed by the Facebook team, Jest's versatility extends beyond React applications, making it a valuable asset for testing various JavaScript frameworks and projects.
@@ -190,3 +224,5 @@ Jest empowers developers to consider different scenarios and error states, encom
 Thanks to Jest's straightforward syntax and easy integration with Node.js projects, setting up and running tests is seamless. Additionally, Jest's code coverage analysis highlights the tested parts of the codebase, providing valuable insights into the effectiveness of your tests.
 
 To sum it up, Jest is an indispensable tool for modern software development. Embracing a testing-centric approach leads to improved code quality, easier maintenance, and increased team productivity. By incorporating Jest, you lay a strong foundation for creating reliable, efficient, and high-quality applications that exceed user expectations. So, in your coding endeavors, consider Jest to unlock the wonders of robust testing and propel your projects to new heights. Happy testing! 🚀
+
+![Sonny and Mariel high fiving.](https://content.codecademy.com/courses/learn-cpp/community-challenge/highfive.gif)

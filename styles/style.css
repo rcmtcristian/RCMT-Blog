@@ -83,6 +83,20 @@ body {
   }
 }
 
+.single__content > p > img {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  background: red;
+}
+.single__content > h1 > img {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
 .bg {
   position: fixed;
   top: -50%;

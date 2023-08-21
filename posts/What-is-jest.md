@@ -1,6 +1,6 @@
 ---
 title: What is Jest
-image: 3.gif
+image: 11.gif
 description: The Wonders of TDD
 ---
 

@@ -1,7 +1,7 @@
 ---
 date: "2023-07-29"
-title: The Banana Rule Unleashing the Power of UX/UI Design
-image: 7.png
+title: The Banana Rule - Unleashing the Power of UX/UI Design
+image: 18.gif
 description: UX/UI
 ---
 

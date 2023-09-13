@@ -1,8 +1,9 @@
 ---
 title: Means to an End
 image: 10.gif
-description: Thought #1
+description: Thought #1, Cover: @HAL09999
 ---
+Cover: @HAL09999
 
 “We were clearing a path and cleaning up the weeds However, we weren't adhering to a specific version of reality that we wanted to see. We were employing our creativity to justify the perspective we desired. Our actions weren't misleading anyone else; rather, we were deceiving ourselves.
 

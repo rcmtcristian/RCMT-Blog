@@ -64,7 +64,7 @@ These algorithms are widely used in various applications and it’s important fo
 - Quicksort is a divide-and-conquer algorithm that chooses a “pivot” element from the array and partitions the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.
 </br>
 
-# ![code](https://i.imgur.com/xvK1m5y.png)
+# ![code](https://i.imgur.com/CwVKsYp.gif)
 
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;
@@ -73,6 +73,7 @@ These algorithms are widely used in various applications and it’s important fo
   <summary >Quicksort Code</summary>
   <pre style="padding: 2em 2em ">
   <samp >
+  ```js
 function quicksort(arr) {
   if (arr.length <= 1) {
     return arr;
@@ -93,6 +94,7 @@ function quicksort(arr) {
   return quicksort(left).concat(middle).concat(quicksort(right));
 }
 console.log(quicksort([3, 6, 8, 10, 1, 2, 1]));
+```
 </samp></pre>
 </details>
 
@@ -102,7 +104,7 @@ console.log(quicksort([3, 6, 8, 10, 1, 2, 1]));
 - The merge sort algorithm is a divide-and-conquer algorithm that divides an array in two, sorts the two halves, and then merges them back together.
 </br>
 
-# ![code](https://i.imgur.com/xvK1m5y.png)
+# ![Merge Sort code](https://i.imgur.com/NOJFsRt.gif)
 
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;
@@ -145,9 +147,9 @@ console.log(merge_sort([3, 6, 8, 10, 1, 2, 1]));
 ### Heap Sort
 
 - The heap sort algorithm is a comparison-based sorting algorithm that builds a heap from the input elements and then repeatedly extracts the maximum element from the heap and places it at the end of the sorted output array.
-</br>
 
-# ![Heap Sort code](https://i.imgur.com/xvK1m5y.png)
+
+ ![Heap Sort code](https://i.imgur.com/fkqO329.gif)
 
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;
@@ -189,6 +191,8 @@ console.log(arr);
 
 </samp></pre>
 </details>
+
+</br>
 
 ## Search algorithms
 
@@ -731,3 +735,12 @@ These are some of the most commonly used algorithms that every programmer should
 Data structures are the building blocks of efficient algorithms and problem-solving in computer science. While they might appear complex initially, with practice and the right guidance, you'll soon find yourself embracing their power and using them to create elegant and efficient solutions.
 
 So, why wait? Start your data structure journey today and unlock the true potential of your coding skills. Remember, it's not just about mastering algorithms; it's about becoming a better problem solver and a skilled software engineer. Happy coding!
+
+## Acknowledgements
+
+Sites used for visualizations:
+
+- [Visualgo](https://visualgo.net/en) - Visualgo website
+- [Heap Visualization by Ben Frederickson](https://www.benfrederickson.com/heap-visualization/) - Heap Visualization by Ben Frederickson
+- [Pathfinding Visualizer by Clement Mihailescu](https://clementmihailescu.github.io/Pathfinding-Visualizer/#) - Pathfinding Visualizer by Clement Mihailescu
+- [CSVISTool](https://csvistool.com/) - CSVISTool website

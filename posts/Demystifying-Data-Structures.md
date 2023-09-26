@@ -741,3 +741,4 @@ Sites used for visualizations:
 - [Heap Visualization by Ben Frederickson](https://www.benfrederickson.com/heap-visualization/) - Heap Visualization by Ben Frederickson
 - [Pathfinding Visualizer by Clement Mihailescu](https://clementmihailescu.github.io/Pathfinding-Visualizer/#) - Pathfinding Visualizer by Clement Mihailescu
 - [CSVISTool](https://csvistool.com/) - CSVISTool website
+- [Algorithms Visualization by cs.usfca.edu](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html) - Algorithms Visualization by cs.usfca.edu

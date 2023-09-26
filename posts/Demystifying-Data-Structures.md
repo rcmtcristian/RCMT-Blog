@@ -42,7 +42,7 @@ As a beginner, you might wonder how to enhance your skills in data structures an
 
 ### The Big Picture
 
-Now that we got the base essentials out of the way. we can look further into the horizon and take a gander at some of the most important Algos there are.  The main goal of an algorithm is to take in input, process it and provide an output that is expected. Algorithms can be classified based on the time and space complexity, the technique used for solving the problem, and the type of problem it solves. Examples of algorithm are sorting, searching, graph traversals, string manipulations, mathematical operations, and many more.
+Now that we got the base essentials out of the way. we can look further into the horizon and take a gander at some of the most important Algos there are. The main goal of an algorithm is to take in input, process it and provide an output that is expected. Algorithms can be classified based on the time and space complexity, the technique used for solving the problem, and the type of problem it solves. Examples of algorithm are sorting, searching, graph traversals, string manipulations, mathematical operations, and many more.
 
 ### Algorithms we will be talking about
 
@@ -58,37 +58,59 @@ Now that we got the base essentials out of the way. we can look further into the
 These algorithms are widely used in various applications and it’s important for a programmer to have a strong understanding of them. So I will try my best to explain them.
 
 ## Sorting algorithms
+</br>
 
-- Quicksort: Quicksort is a divide-and-conquer algorithm that chooses a “pivot” element from the array and partitions the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.
+### Quicksort: 
+- Quicksort is a divide-and-conquer algorithm that chooses a “pivot” element from the array and partitions the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.
+</br>
 
-```js
+# ![code](https://i.imgur.com/xvK1m5y.png)
+
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Quicksort Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
 function quicksort(arr) {
-    if (arr.length <= 1) {
-        return arr;
+  if (arr.length <= 1) {
+    return arr;
+  }
+  const pivot = arr[Math.floor(arr.length / 2)];
+  const left = [];
+  const middle = [];
+  const right = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else if (arr[i] === pivot) {
+      middle.push(arr[i]);
+    } else {
+      right.push(arr[i]);
     }
-    const pivot = arr[Math.floor(arr.length / 2)];
-    const left = [];
-    const middle = [];
-    const right = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] < pivot) {
-            left.push(arr[i]);
-        } else if (arr[i] === pivot) {
-            middle.push(arr[i]);
-        } else {
-            right.push(arr[i]);
-        }
-    }
-    return quicksort(left).concat(middle).concat(quicksort(right));
+  }
+  return quicksort(left).concat(middle).concat(quicksort(right));
 }
-
 console.log(quicksort([3, 6, 8, 10, 1, 2, 1]));
+</samp></pre>
+</details>
 
-```
+</br>
 
-- Merge Sort: The merge sort algorithm is a divide-and-conquer algorithm that divides an array in two, sorts the two halves, and then merges them back together.
+### Merge Sort
+- The merge sort algorithm is a divide-and-conquer algorithm that divides an array in two, sorts the two halves, and then merges them back together.
+</br>
 
-```js
+# ![code](https://i.imgur.com/xvK1m5y.png)
+
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Merge Sort Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp>
 function merge_sort(arr) {
     if (arr.length <= 1) {
         return arr;
@@ -98,7 +120,6 @@ function merge_sort(arr) {
     const right = merge_sort(arr.slice(mid));
     return merge(left, right);
 }
-
 function merge(left, right) {
     const result = [];
     let i = 0;
@@ -114,62 +135,84 @@ function merge(left, right) {
     }
     return result.concat(left.slice(i)).concat(right.slice(j));
 }
-
 console.log(merge_sort([3, 6, 8, 10, 1, 2, 1]));
+</samp>
+</pre>
+</details>
 
-```
+</br>
 
-- Heap Sort: The heap sort algorithm is a comparison-based sorting algorithm that builds a heap from the input elements and then repeatedly extracts the maximum element from the heap and places it at the end of the sorted output array.
+### Heap Sort
 
-```js
+- The heap sort algorithm is a comparison-based sorting algorithm that builds a heap from the input elements and then repeatedly extracts the maximum element from the heap and places it at the end of the sorted output array.
+</br>
+
+# ![Heap Sort code](https://i.imgur.com/xvK1m5y.png)
+
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Heap Sort Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
 function heap_sort(arr) {
-    const n = arr.length;
-    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
-        heapify(arr, n, i);
-    }
-    for (let i = n - 1; i > 0; i--) {
-        [arr[i], arr[0]] = [arr[0], arr[i]];
-        heapify(arr, i, 0);
-    }
+  const n = arr.length;
+  for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+    heapify(arr, n, i);
+  }
+  for (let i = n - 1; i > 0; i--) {
+    [arr[i], arr[0]] = [arr[0], arr[i]];
+    heapify(arr, i, 0);
+  }
 }
-
 function heapify(arr, n, i) {
-    let largest = i;
-    let left = 2 * i + 1;
-    let right = 2 * i + 2;
+  let largest = i;
+  let left = 2 *i + 1;
+  let right = 2* i + 2;
 
-    if (left < n && arr[left] > arr[largest]) {
-        largest = left;
-    }
+  if (left < n && arr[left] > arr[largest]) {
+    largest = left;
+  }
 
-    if (right < n && arr[right] > arr[largest]) {
-        largest = right;
-    }
-
-    if (largest !== i) {
-        [arr[i], arr[largest]] = [arr[largest], arr[i]];
-        heapify(arr, n, largest);
-    }
+  if (right < n && arr[right] > arr[largest]) {
+    largest = right;
+  }
+  if (largest !== i) {
+    [arr[i], arr[largest]] = [arr[largest], arr[i]];
+    heapify(arr, n, largest);
+  }
 }
-
 const arr = [3, 6, 8, 10, 1, 2, 1];
 heap_sort(arr);
 console.log(arr);
 
-```
+</samp></pre>
+</details>
 
 ## Search algorithms
 
-- Binary Search: Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the array being searched, until the target value is found.
+</br>
 
-```javascript
+### Binary Search
+
+- Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the array being searched, until the target value is found.
+</br>
+
+# ![Binary search code](https://i.imgur.com/xvK1m5y.png)
+
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Binary search Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
 function binarySearch(arr, target) {
   let left = 0;
   let right = arr.length - 1;
-
   while (left <= right) {
     const mid = Math.floor((left + right) / 2);
-
     if (arr[mid] === target) {
       return mid; // Found the target, return its index
     } else if (arr[mid] < target) {
@@ -178,21 +221,19 @@ function binarySearch(arr, target) {
       right = mid - 1; // Target is in the left half of the current range
     }
   }
-
   return -1; // Target not found in the array
 }
-
 // Example usage:
 const sortedArray = [1, 3, 5, 7, 9, 11, 13, 15, 17];
 const targetValue = 9;
 const resultIndex = binarySearch(sortedArray, targetValue);
-
 if (resultIndex !== -1) {
   console.log(`Target ${targetValue} found at index ${resultIndex}.`);
 } else {
   console.log(`Target ${targetValue} not found in the array.`);
 }
-```
+</samp></pre>
+</details>
 
 In this implementation, the `binarySearch` function takes a sorted array (`arr`) and a target value (`target`) as inputs. It sets two pointers, `left` and `right`, initially pointing to the first and last elements of the array, respectively.
 
@@ -202,116 +243,146 @@ If the loop exits without finding the target value, the function returns `-1` to
 
 The example usage demonstrates searching for the target value `9` in the sorted array. If the target value is found, it prints the index where it was found; otherwise, it indicates that the target value is not present in the array.
 
-- Hash Tables: A hash table is a data structure that maps keys to values, using a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
+### Hash Tables
 
-```js
+- hash table is a data structure that maps keys to values, using a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
+</br>
+
+# ![Hash Tables code](https://i.imgur.com/xvK1m5y.png)
+
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Hash Tables Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
 class HashTable {
-    constructor() {
-        this.size = 10;
-        this.keys = new Array(this.size);
-        this.values = new Array(this.size);
+  constructor() {
+    this.size = 10;
+    this.keys = new Array(this.size);
+    this.values = new Array(this.size);
+  }
+  put(key, data) {
+    const index = this.hashFunction(key);
+    while (this.keys[index] !== undefined) {
+      if (this.keys[index] === key) {
+        this.values[index] = data; // update
+        return;
+      }
+      index = (index + 1) % this.size;
     }
-
-    put(key, data) {
-        const index = this.hashFunction(key);
-        while (this.keys[index] !== undefined) {
-            if (this.keys[index] === key) {
-                this.values[index] = data; // update
-                return;
-            }
-            index = (index + 1) % this.size;
-        }
-        this.keys[index] = key;
-        this.values[index] = data;
+    this.keys[index] = key;
+    this.values[index] = data;
+  }
+  get(key) {
+    const index = this.hashFunction(key);
+    while (this.keys[index] !== undefined) {
+      if (this.keys[index] === key) {
+        return this.values[index];
+      }
+      index = (index + 1) % this.size;
     }
-
-    get(key) {
-        const index = this.hashFunction(key);
-        while (this.keys[index] !== undefined) {
-            if (this.keys[index] === key) {
-                return this.values[index];
-            }
-            index = (index + 1) % this.size;
-        }
-        return undefined;
+    return undefined;
+  }
+  hashFunction(key) {
+    let sum = 0;
+    for (let pos = 0; pos < key.length; pos++) {
+      sum += key.charCodeAt(pos);
     }
-
-    hashFunction(key) {
-        let sum = 0;
-        for (let pos = 0; pos < key.length; pos++) {
-            sum += key.charCodeAt(pos);
-        }
-        return sum % this.size;
-    }
+    return sum % this.size;
+  }
 }
-
 const t = new HashTable();
 t.put("apple", 10);
 t.put("orange", 20);
 t.put("banana", 30);
 console.log(t.get("orange"));
+</samp></pre>
+</details>
 
-```
+</br>
 
 ## Graph Algorithm
+</br>
 
-- Dijkstra’s shortest path algorithm: Dijkstra’s shortest path algorithm is an algorithm for finding the shortest path between nodes in a graph.
+### Dijkstra’s shortest path algorithm
+- Dijkstra’s shortest path algorithm is an algorithm for finding the shortest path between nodes in a graph.
+</br>
 
-```js
-const PriorityQueue = require('priorityqueuejs');
+# ![Dijkstra’s code](https://i.imgur.com/xvK1m5y.png)
 
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Dijkstra’s Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
+const PriorityQueue = require("priorityqueuejs");
 function dijkstra(graph, start) {
-    const heap = new PriorityQueue((a, b) => a[0] - b[0]);
-    const visited = new Set();
-    heap.enq([0, start]);
-    
-    while (!heap.isEmpty()) {
-        const [cost, v] = heap.deq();
-        if (!visited.has(v)) {
-            visited.add(v);
-            for (let u in graph[v]) {
-                if (!visited.has(u)) {
-                    heap.enq([cost + graph[v][u], u]);
-                }
-            }
+  const heap = new PriorityQueue((a, b) => a[0] - b[0]);
+  const visited = new Set();
+  heap.enq([0, start]);
+  while (!heap.isEmpty()) {
+    const [cost, v] = heap.deq();
+    if (!visited.has(v)) {
+      visited.add(v);
+      for (let u in graph[v]) {
+        if (!visited.has(u)) {
+          heap.enq([cost + graph[v][u], u]);
         }
+      }
     }
-    
-    return visited;
+  }
+  return visited;
 }
-
 const graph = {
-    'A': { 'B': 2, 'C': 3 },
-    'B': { 'D': 4, 'E': 5 },
-    'C': { 'F': 6 },
-    'D': { 'G': 7 },
-    'E': { 'G': 8, 'H': 9 },
-    'F': { 'H': 10 },
-    'G': {},
-    'H': {}
+  A: { B: 2, C: 3 },
+  B: { D: 4, E: 5 },
+  C: { F: 6 },
+  D: { G: 7 },
+  E: { G: 8, H: 9 },
+  F: { H: 10 },
+  G: {},
+  H: {},
 };
+console.log(dijkstra(graph, "A"));
+</samp></pre>
+</details>
 
-console.log(dijkstra(graph, 'A'));
-```
+</br>
 
 ## Dynamic Programming
+</br>
 
-- Fibonacci sequence: A classic example of a problem that can be solved using dynamic programming is the Fibonacci sequence.
+### Fibonacci sequence: 
+- A classic example of a problem that can be solved using dynamic programming is the Fibonacci sequence.
+</br>
 
-```js
+# ![Fibonacci  code](https://i.imgur.com/xvK1m5y.png)
+
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Fibonacci Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
 function fibonacci(n) {
-    if (n <= 0) {
-        return 0;
-    } else if (n === 1) {
-        return 1;
-    } else {
-        return fibonacci(n - 1) + fibonacci(n - 2);
-    }
+  if (n <= 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  } else {
+    return fibonacci(n - 1) + fibonacci(n - 2);
+  }
 }
-
 console.log(fibonacci(10));
+</samp></pre>
+</details>
 
-```
+</br>
 
 ## Greedy Algorithms
 
@@ -320,9 +391,15 @@ console.log(fibonacci(10));
 In other words, Huffman coding adapts its encoding scheme dynamically, tailoring it to the specific input data. Characters that occur more frequently, such as common letters in a text, are represented with shorter codes, reducing the overall size of the compressed data. On the contrary, less frequent characters, like rare symbols, receive longer codes, which may use more bits but are compensated by the savings achieved for frequently occurring characters.
 
 By constructing a prefix code, Huffman coding ensures that each code assigned to a character is not a prefix of another code, preventing ambiguity during decoding. This clever design guarantees that when the compressed data is decompressed, we get back the exact original data without any loss of information. Thus, Huffman coding achieves efficient data compression while preserving data integrity.
+</br>
 
-### Detailed explanation
+# ![Greedy code](https://i.imgur.com/xvK1m5y.png)
 
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary > <h3>Detailed explanation</h3> </summary>
 Huffman coding is a lossless data compression algorithm: Lossless means that when we compress the data using Huffman coding and then decompress it, we get back the exact same original data without any loss of information. In other words, no data is lost during the compression and decompression process.
 
 that uses a greedy algorithm: A greedy algorithm is a method that makes the best choice at each step, without worrying about the overall result. In the case of Huffman coding, the algorithm makes decisions by focusing on the most immediate benefit, which is assigning shorter codes to more frequently occurring characters.
@@ -334,10 +411,17 @@ Huffman coding assigns variable-length codes to characters based on their freque
 Characters that occur more frequently are assigned shorter codes, while less frequent characters are assigned longer codes: This statement further emphasizes that Huffman coding adapts its encoding based on the frequency of characters in the input data. Popular characters, which occur more often, are represented using shorter codes, reducing the size of the compressed data. On the other hand, less frequent characters, which occur rarely, are represented using longer codes, which may use more bits but are offset by the savings achieved for frequently occurring characters.
 
 Overall, Huffman coding is an intelligent data compression technique that efficiently represents data by assigning shorter codes to common characters and longer codes to less common characters, resulting in a compressed data representation without any loss of information during compression and decompression.
+</details>
 
 ### Below is an implementation of the Huffman coding algorithm in JavaScript
 
-```javascript
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Huffman Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
 class Node {
   constructor(char, freq) {
     this.char = char;
@@ -346,17 +430,13 @@ class Node {
     this.right = null;
   }
 }
-
 function buildFrequencyTable(str) {
   const frequencyTable = {};
-
   for (let char of str) {
     frequencyTable[char] = (frequencyTable[char] || 0) + 1;
   }
-
   return frequencyTable;
 }
-
 function buildHuffmanTree(frequencyTable) {
   const priorityQueue = [];
   for (let char in frequencyTable) {
@@ -364,7 +444,6 @@ function buildHuffmanTree(frequencyTable) {
     priorityQueue.push(node);
   }
   priorityQueue.sort((a, b) => a.freq - b.freq);
-
   while (priorityQueue.length > 1) {
     const left = priorityQueue.shift();
     const right = priorityQueue.shift();
@@ -374,79 +453,89 @@ function buildHuffmanTree(frequencyTable) {
     priorityQueue.push(newNode);
     priorityQueue.sort((a, b) => a.freq - b.freq);
   }
-
   return priorityQueue[0];
 }
-
-function buildHuffmanCodes(node, code = '', huffmanCodes = {}) {
+function buildHuffmanCodes(node, code = "", huffmanCodes = {}) {
   if (node.char !== null) {
     huffmanCodes[node.char] = code;
   } else {
-    buildHuffmanCodes(node.left, code + '0', huffmanCodes);
-    buildHuffmanCodes(node.right, code + '1', huffmanCodes);
+    buildHuffmanCodes(node.left, code + "0", huffmanCodes);
+    buildHuffmanCodes(node.right, code + "1", huffmanCodes);
   }
-
   return huffmanCodes;
 }
-
 function huffmanEncode(str, huffmanCodes) {
-  let encodedStr = '';
+  let encodedStr = "";
   for (let char of str) {
     encodedStr += huffmanCodes[char];
   }
   return encodedStr;
 }
-
 function huffmanDecode(encodedStr, huffmanTree) {
-  let decodedStr = '';
+  let decodedStr = "";
   let currentNode = huffmanTree;
-
   for (let bit of encodedStr) {
-    if (bit === '0') {
+    if (bit === "0") {
       currentNode = currentNode.left;
     } else {
       currentNode = currentNode.right;
     }
-
     if (currentNode.char !== null) {
       decodedStr += currentNode.char;
       currentNode = huffmanTree;
     }
   }
-
   return decodedStr;
 }
-
 // Example usage:
-const inputString = 'huffman coding example';
+const inputString = "huffman coding example";
 const frequencyTable = buildFrequencyTable(inputString);
 const huffmanTree = buildHuffmanTree(frequencyTable);
 const huffmanCodes = buildHuffmanCodes(huffmanTree);
 const encodedString = huffmanEncode(inputString, huffmanCodes);
 const decodedString = huffmanDecode(encodedString, huffmanTree);
+console.log("Original string:", inputString);
+console.log("Encoded string:", encodedString);
+console.log("Decoded string:", decodedString);
+</samp></pre>
+</details>
 
-console.log('Original string:', inputString);
-console.log('Encoded string:', encodedString);
-console.log('Decoded string:', decodedString);
-```
+</br>
 
 In this implementation, we define a `Node` class to represent the nodes in the Huffman tree. The `buildFrequencyTable` function creates a frequency table based on the input string. The `buildHuffmanTree` function constructs the Huffman tree using a priority queue. The `buildHuffmanCodes` function recursively builds the Huffman codes for each character in the tree. The `huffmanEncode` function encodes the input string using the generated Huffman codes. The `huffmanDecode` function decodes the encoded string using the Huffman tree.
 
-## Divide and Conquer
+</br>
+</br>
 
-- Merge Sort: already explained above
+## Divide and Conquer
+</br>
+
+### Merge Sort:
+-  already explained above
+
+</br>
 
 ## Backtracking
+</br>
 
-- The N-Queens Problem: The N-Queens problem is a classic problem that can be solved using backtracking. The goal is to place N queens on an NxN chessboard in such a way that no queen can attack any other queen.
+### The N-Queens Problem:
+- The N-Queens problem is a classic problem that can be solved using backtracking. The goal is to place N queens on an NxN chessboard in such a way that no queen can attack any other queen.
+</br>
 
-```js
-var solveNQueens = function(n) {
+# ![The N-Queens code](https://i.imgur.com/xvK1m5y.png)
+
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >N-Queens Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
+var solveNQueens = function (n) {
   var res = [];
   if (n === 1 || n >= 4) dfs(res, [], n, 0);
   return res;
 };
-
 var dfs = function (res, points, n, index) {
   for (var i = index; i < n; i++) {
     if (points.length !== i) return;
@@ -460,28 +549,33 @@ var dfs = function (res, points, n, index) {
     }
   }
 };
-
 var buildRes = function (points) {
   var res = [];
   var n = points.length;
   for (var i = 0; i < n; i++) {
-    res[i] = '';
+    res[i] = "";
     for (var j = 0; j < n; j++) {
-      res[i] += (points[i][1] === j ? 'Q' : '.');
+      res[i] += points[i][1] === j ? "Q" : ".";
     }
   }
   return res;
 };
-
 var isValid = function (oldPoints, newPoint) {
   var len = oldPoints.length;
   for (var i = 0; i < len; i++) {
-    if (oldPoints[i][0] === newPoint[0] || oldPoints[i][1] === newPoint[1]) return false;
-    if (Math.abs((oldPoints[i][0] - newPoint[0]) / (oldPoints[i][1] - newPoint[1])) === 1) return false;
+    if (oldPoints[i][0] === newPoint[0] || oldPoints[i][1] === newPoint[1])
+      return false;
+    if (
+      Math.abs(
+        (oldPoints[i][0] - newPoint[0]) / (oldPoints[i][1] - newPoint[1])
+      ) === 1
+    )
+      return false;
   }
   return true;
 };
-```
+</samp></pre>
+</details>
 
 The main function, `solveNQueens`, initializes an empty `res` array and calls the `dfs` function to perform the depth-first search. After the search is complete, the function returns the `res` array.
 
@@ -495,39 +589,46 @@ Considering the `dfs` function, the worst-case time complexity occurs when all p
 
 For each row, the number of valid positions decreases, which reduces the branching factor. Therefore, the time complexity is not as high as O(N!), but it is still exponential. The exact time complexity of this implementation is difficult to determine precisely due to the varying number of valid positions at each row. In practice, it performs better than the straightforward backtracking solution but can still be slow for large values of N.
 
+</br>
+
 ## Randomized Algorithm
+</br>
 
-Randomized QuickSort: A variation of quicksort algorithm where pivot is chosen randomly.
+### Randomized QuickSort: 
+- A variation of quicksort algorithm where pivot is chosen randomly.
+</br>
 
-```javascript
+# ![Randomized QuickSort code](https://i.imgur.com/xvK1m5y.png)
+
+  <details style="background-color: #f1f3f5;
+  font-family: courier, monospace;
+  color: #0a0a0a;
+  ">
+  <summary >Randomized QuickSort Code</summary>
+  <pre style="padding: 2em 2em ">
+  <samp >
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 function swap(arr, i, j) {
   const temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
 }
-
 function partition(arr, low, high) {
   const pivotIndex = randomInt(low, high);
   const pivotValue = arr[pivotIndex];
   swap(arr, pivotIndex, high);
-
   let partitionIndex = low;
-
   for (let i = low; i < high; i++) {
     if (arr[i] < pivotValue) {
       swap(arr, i, partitionIndex);
       partitionIndex++;
     }
   }
-
   swap(arr, partitionIndex, high);
   return partitionIndex;
 }
-
 function quickSort(arr, low, high) {
   if (low < high) {
     const pivotIndex = partition(arr, low, high);
@@ -535,15 +636,14 @@ function quickSort(arr, low, high) {
     quickSort(arr, pivotIndex + 1, high);
   }
 }
-
 // Example usage:
 const arrayToSort = [9, 3, 7, 1, 5, 6, 8, 2, 4];
 console.log("Original array:", arrayToSort);
-
 quickSort(arrayToSort, 0, arrayToSort.length - 1);
-
 console.log("Sorted array:", arrayToSort);
-```
+</samp></pre>
+</details>
+
 
 In this implementation, `randomInt` is a helper function that generates a random integer between `min` and `max`, inclusive. The `swap` function is used to swap elements in the array. The `partition` function picks a random pivot element, places it at the end of the array, and rearranges the array so that all elements less than the pivot are on the left side, and all elements greater than or equal to the pivot are on the right side.
 
@@ -553,63 +653,78 @@ Keep in mind that this implementation modifies the original array in place. If y
 
 These are some of the most commonly used algorithms that every programmer should be familiar with. Understanding these algorithms and their implementation can help a programmer to make better decisions when it comes to designing and implementing efficient solutions.
 
-## Summary
+</br>
 
-1. Sorting algorithms:
+## Summary
+<br />
+
+### Sorting algorithms:
 
 - Sorting is a fundamental operation in computer science and there are several efficient algorithms for it, such as quicksort, merge sort and heap sort.
 - Quicksort is a divide-and-conquer algorithm that chooses a “pivot” element from the array and partitions the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.
 - The merge sort algorithm is a divide-and-conquer algorithm that divides an array in two, sorts the two halves, and then merges them back together.
 - The heap sort algorithm is a comparison-based sorting algorithm that builds a heap from the input elements and then repeatedly extracts the maximum element from the heap and places it at the end of the sorted output array.
+<br />
 
-2. Search algorithms:
+### Search algorithms:
 
 - Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the array being searched, until the target value is found.
 - A hash table is a data structure that maps keys to values, using a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
 
-3. Graph algorithms:
+<br />
+
+###  Graph algorithms:
 
 - Graph algorithms are used to solve problems related to graphs, such as finding the shortest path between two nodes or determining if a graph is connected.
 - Dynamic programming is a technique used to solve problems by breaking them down into smaller subproblems.
 - The Fibonacci sequence is a classic example of a problem that can be solved using dynamic programming.
 
-4. Dynamic programming:
+<br />
+
+### Dynamic programming:
 
 - Dynamic programming is a technique for solving problems by breaking them down into smaller subproblems and storing the solutions to these subproblems to avoid redundant computation.
+<br />
 
-5. Greedy algorithms:
+### Greedy algorithms:
 
 - Greedy algorithms are used to solve optimization problems by making the locally optimal choice at each step with the hope of finding a global optimum.
 - Huffman coding is a lossless data compression algorithm that uses a greedy algorithm to construct a prefix code for a given set of symbols.
 - It works by assigning shorter codes to more frequently occurring symbols.
+<br />
 
-6. Divide and Conquer:
+### Divide and Conquer:
 
 - Divide and Conquer is an algorithm design paradigm based on multi-branched recursion. A divide and conquer algorithm breaks down a problem into sub-problems of the same or related type, until these become simple enough to be solved directly.
 - Merge sort is a sorting algorithm that uses the divide and conquer technique.
 - It works by dividing the input array into smaller subarrays, sorting them, and then merging them back together.
+<br />
 
-7. Backtracking:
+### Backtracking:
 
 - Backtracking is a general algorithmic technique that considers searching every possible combination in a systematic manner, and abandons a particular path as soon as it determines that it cannot be part of the solution.
-    - - The N-Queens problem is a classic problem that can be solved using backtracking.
+- The N-Queens problem is a classic problem that can be solved using backtracking.
 - The goal is to place N queens on an NxN chessboard in such a way that no queen can attack any other queen.
+<br />
 
-8. Randomized Algorithm:
+### Randomized Algorithm:
 
 - Randomized algorithms use randomness to solve a problem. It can be useful to solve problems that cannot be solved deterministically or to improve the average case complexity of a problem.
 - Randomized quicksort is a variation of the quicksort algorithm where the pivot is chosen randomly.
 - It works by partitioning the array around the pivot and then recursively sorting the subarrays.
+<br />
 
-9. Hash Tables:
+### Hash Tables:
 
 - Hash tables are a data structure that allows for efficient lookup, insertion, and deletion of key-value pairs.
 - They work by using a hash function to map keys to indices in an array.
+<br />
 
-10. Dijkstra's Shortest Path Algorithm:
+### Dijkstra's Shortest Path Algorithm:
 
 - Dijkstra's algorithm is used to find the shortest path between nodes in a graph.
 - It uses a priority queue to keep track of the nodes with the shortest distance from the starting node.
+<br />
 
 ## Conclusion
 

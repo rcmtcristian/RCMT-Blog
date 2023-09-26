@@ -97,6 +97,39 @@ body {
   display: block;
 }
 
+h1 {
+  padding-left: 10px;
+}
+
+h2 {
+  padding-left: 10px;
+}
+
+h3 {
+  padding-left: 10px;
+}
+
+h4 {
+  padding-left: 10px;
+}
+
+h5 {
+  padding-left: 10px;
+}
+
+h6 {
+  padding-left: 10px;
+}
+
+lu,
+li,
+lo {
+  padding-left: 10px;
+}
+
+details * {
+  padding-left: 10px;
+}
 .bg {
   position: fixed;
   top: -50%;
@@ -219,11 +252,18 @@ canvas {
 .item h2 {
   font-weight: 900;
   color: #fff;
+  padding-left: 10px;
 }
 .item p {
   font-weight: 400;
   color: #ccc;
 }
+
+p {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .item:last-child {
   margin-right: 300px;
 }

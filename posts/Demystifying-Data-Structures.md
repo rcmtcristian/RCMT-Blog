@@ -72,8 +72,7 @@ These algorithms are widely used in various applications and it’s important fo
   ">
   <summary >Quicksort Code</summary>
   <pre style="padding: 2em 2em ">
-  <samp >
-  ```js
+  <code class="language-javascript">
 function quicksort(arr) {
   if (arr.length <= 1) {
     return arr;
@@ -94,8 +93,7 @@ function quicksort(arr) {
   return quicksort(left).concat(middle).concat(quicksort(right));
 }
 console.log(quicksort([3, 6, 8, 10, 1, 2, 1]));
-```
-</samp></pre>
+</code></pre>
 </details>
 
 </br>

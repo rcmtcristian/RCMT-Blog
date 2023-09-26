@@ -15,6 +15,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
     "concurrently": "^7.6.0",
     "gsap": "^3.12.2",
+    "highlight.js": "^11.8.0",
     "liquid": "^5.1.1",
     "liquidjs": "^10.6.1",
     "node-sass": "^8.0.0",

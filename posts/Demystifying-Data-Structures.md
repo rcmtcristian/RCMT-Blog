@@ -71,7 +71,7 @@ These algorithms are widely used in various applications and it’s important fo
   color: #0a0a0a;
   ">
   <summary >Quicksort Code</summary>
-  <pre style="padding: 2em 2em ">
+  <pre style="padding: 1em 0em ">
   <code class="language-javascript">
 function quicksort(arr) {
   if (arr.length <= 1) {
@@ -109,8 +109,8 @@ console.log(quicksort([3, 6, 8, 10, 1, 2, 1]));
   color: #0a0a0a;
   ">
   <summary >Merge Sort Code</summary>
-  <pre style="padding: 2em 2em ">
-  <samp>
+  <pre style="padding: 1em 0em ">
+  <code class="language-javascript">
 function merge_sort(arr) {
     if (arr.length <= 1) {
         return arr;
@@ -136,7 +136,7 @@ function merge(left, right) {
     return result.concat(left.slice(i)).concat(right.slice(j));
 }
 console.log(merge_sort([3, 6, 8, 10, 1, 2, 1]));
-</samp>
+</code>
 </pre>
 </details>
 
@@ -154,8 +154,8 @@ console.log(merge_sort([3, 6, 8, 10, 1, 2, 1]));
   color: #0a0a0a;
   ">
   <summary >Heap Sort Code</summary>
-  <pre style="padding: 2em 2em ">
-  <samp >
+  <pre style="padding: 1em 0em ">
+  <code class="language-javascript">
 function heap_sort(arr) {
   const n = arr.length;
   for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
@@ -170,11 +170,9 @@ function heapify(arr, n, i) {
   let largest = i;
   let left = 2 *i + 1;
   let right = 2* i + 2;
-
   if (left < n && arr[left] > arr[largest]) {
     largest = left;
   }
-
   if (right < n && arr[right] > arr[largest]) {
     largest = right;
   }
@@ -186,8 +184,8 @@ function heapify(arr, n, i) {
 const arr = [3, 6, 8, 10, 1, 2, 1];
 heap_sort(arr);
 console.log(arr);
-
-</samp></pre>
+</code>
+</pre>
 </details>
 
 </br>
@@ -208,8 +206,8 @@ console.log(arr);
   color: #0a0a0a;
   ">
   <summary >Binary search Code</summary>
-  <pre style="padding: 2em 2em ">
-  <samp >
+  <pre style="padding: 1em 0em ">
+  <code class="language-javascript">
 function binarySearch(arr, target) {
   let left = 0;
   let right = arr.length - 1;
@@ -234,7 +232,8 @@ if (resultIndex !== -1) {
 } else {
   console.log(`Target ${targetValue} not found in the array.`);
 }
-</samp></pre>
+</code>
+</pre>
 </details>
 
 In this implementation, the `binarySearch` function takes a sorted array (`arr`) and a target value (`target`) as inputs. It sets two pointers, `left` and `right`, initially pointing to the first and last elements of the array, respectively.
@@ -257,8 +256,8 @@ The example usage demonstrates searching for the target value `9` in the sorted 
   color: #0a0a0a;
   ">
   <summary >Hash Tables Code</summary>
-  <pre style="padding: 2em 2em ">
-  <samp >
+   <pre style="padding: 1em 0em ">
+  <code class="language-javascript">
 class HashTable {
   constructor() {
     this.size = 10;
@@ -300,7 +299,7 @@ t.put("apple", 10);
 t.put("orange", 20);
 t.put("banana", 30);
 console.log(t.get("orange"));
-</samp></pre>
+</code></pre>
 </details>
 
 </br>
@@ -319,8 +318,8 @@ console.log(t.get("orange"));
   color: #0a0a0a;
   ">
   <summary >Dijkstra’s Code</summary>
-  <pre style="padding: 2em 2em ">
-  <samp >
+  <pre style="padding: 1em 0em ">
+  <code class="language-javascript">
 const PriorityQueue = require("priorityqueuejs");
 function dijkstra(graph, start) {
   const heap = new PriorityQueue((a, b) => a[0] - b[0]);
@@ -350,7 +349,7 @@ const graph = {
   H: {},
 };
 console.log(dijkstra(graph, "A"));
-</samp></pre>
+</code></pre>
 </details>
 
 </br>
@@ -369,8 +368,8 @@ console.log(dijkstra(graph, "A"));
   color: #0a0a0a;
   ">
   <summary >Fibonacci Code</summary>
-  <pre style="padding: 2em 2em ">
-  <samp >
+ <pre style="padding: 1em 0em ">
+  <code class="language-javascript">
 function fibonacci(n) {
   if (n <= 0) {
     return 0;
@@ -381,7 +380,7 @@ function fibonacci(n) {
   }
 }
 console.log(fibonacci(10));
-</samp></pre>
+</code></pre>
 </details>
 
 </br>
@@ -422,8 +421,8 @@ Overall, Huffman coding is an intelligent data compression technique that effici
   color: #0a0a0a;
   ">
   <summary >Huffman Code</summary>
-  <pre style="padding: 2em 2em ">
-  <samp >
+  <pre style="padding: 1em 0em ">
+  <code class="language-javascript">
 class Node {
   constructor(char, freq) {
     this.char = char;
@@ -499,7 +498,7 @@ const decodedString = huffmanDecode(encodedString, huffmanTree);
 console.log("Original string:", inputString);
 console.log("Encoded string:", encodedString);
 console.log("Decoded string:", decodedString);
-</samp></pre>
+</code></pre>
 </details>
 
 </br>
@@ -531,8 +530,8 @@ In this implementation, we define a `Node` class to represent the nodes in the H
   color: #0a0a0a;
   ">
   <summary >N-Queens Code</summary>
-  <pre style="padding: 2em 2em ">
-  <samp >
+   <pre style="padding: 1em 0em ">
+  <code class="language-javascript">
 var solveNQueens = function (n) {
   var res = [];
   if (n === 1 || n >= 4) dfs(res, [], n, 0);
@@ -576,7 +575,7 @@ var isValid = function (oldPoints, newPoint) {
   }
   return true;
 };
-</samp></pre>
+</code></pre>
 </details>
 
 The main function, `solveNQueens`, initializes an empty `res` array and calls the `dfs` function to perform the depth-first search. After the search is complete, the function returns the `res` array.
@@ -607,8 +606,8 @@ For each row, the number of valid positions decreases, which reduces the branchi
   color: #0a0a0a;
   ">
   <summary >Randomized QuickSort Code</summary>
-  <pre style="padding: 2em 2em ">
-  <samp >
+   <pre style="padding: 1em 0em ">
+  <code class="language-javascript">
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -643,7 +642,7 @@ const arrayToSort = [9, 3, 7, 1, 5, 6, 8, 2, 4];
 console.log("Original array:", arrayToSort);
 quickSort(arrayToSort, 0, arrayToSort.length - 1);
 console.log("Sorted array:", arrayToSort);
-</samp></pre>
+</code></pre>
 </details>
 
 

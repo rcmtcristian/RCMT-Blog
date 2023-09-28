@@ -42,7 +42,7 @@ As a beginner, you might wonder how to enhance your skills in data structures an
 
 ### The Big Picture
 
-Now that we got the base essentials out of the way. we can look further into the horizon and take a gander at some of the most important Algos there are. The main goal of an algorithm is to take in input, process it and provide an output that is expected. Algorithms can be classified based on the time and space complexity, the technique used for solving the problem, and the type of problem it solves. Examples of algorithm are sorting, searching, graph traversals, string manipulations, mathematical operations, and many more.
+Now that we got the base essentials out of the way. we can look further into the horizon and take a gander at some of the most important Algos there are. The main goal of an algorithm is to take in input, process it and provide an output that is expected. Algorithms can be classified based on the time and space complexity, the technique used for solving the problem, and the type of problem it solves. Examples of algorithms are sorting, searching, graph traversals, string manipulations, mathematical operations, and many more.
 
 ### Algorithms we will be talking about
 
@@ -196,7 +196,7 @@ console.log(arr);
 
 ### Binary Search
 
-- Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the array being searched, until the target value is found.
+- Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the array being searched until the target value is found.
 </br>
 
 # ![Binary search code](https://i.imgur.com/xvK1m5y.png)
@@ -246,7 +246,7 @@ The example usage demonstrates searching for the target value `9` in the sorted 
 
 ### Hash Tables
 
-- hash table is a data structure that maps keys to values, using a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
+- A hash table is a data structure that maps keys to values, using a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
 </br>
 
 # ![Hash Tables code](https://i.imgur.com/xvK1m5y.png)
@@ -358,6 +358,7 @@ console.log(dijkstra(graph, "A"));
 </br>
 
 ### Fibonacci sequence: 
+
 - A classic example of a problem that can be solved using dynamic programming is the Fibonacci sequence.
 </br>
 

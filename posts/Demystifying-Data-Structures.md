@@ -199,7 +199,7 @@ console.log(arr);
 - Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the array being searched until the target value is found.
 </br>
 
-# ![Binary search code](https://i.imgur.com/xvK1m5y.png)
+![Binary search code](https://i.imgur.com/LdmwRQn.gif)
 
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;
@@ -311,7 +311,7 @@ console.log(t.get("orange"));
 - Dijkstra’s shortest path algorithm is an algorithm for finding the shortest path between nodes in a graph.
 </br>
 
-# ![Dijkstra’s code](https://i.imgur.com/xvK1m5y.png)
+ ![Dijkstra’s code](https://i.imgur.com/QTvBbb0.gif)
 
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;

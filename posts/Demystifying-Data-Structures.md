@@ -1,5 +1,5 @@
 ---
-title: Demystifying Data Structures A Beginner-Friendly Guided
+title: Demystifying Data Structures A Beginner-Friendly Guide
 image: 17.gif
 description: DSA
 ---

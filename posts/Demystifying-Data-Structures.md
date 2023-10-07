@@ -246,10 +246,11 @@ The example usage demonstrates searching for the target value `9` in the sorted 
 
 ### Hash Tables
 
-- A hash table is a data structure that maps keys to values, using a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
+- A hash table is a fundamental data structure that plays a crucial role in many aspects of programming. To gain a deeper understanding of how it works and its practical applications, I highly recommend watching this informative [video](https://www.youtube.com/watch?v=LPzN8jgbnvA).
+
 </br>
 
-# ![Hash Tables code](https://i.imgur.com/xvK1m5y.png)
+# ![Hash Tables code](https://i.imgur.com/DZrlIgL.gif)
 
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;
@@ -362,7 +363,7 @@ console.log(dijkstra(graph, "A"));
 - A classic example of a problem that can be solved using dynamic programming is the Fibonacci sequence.
 </br>
 
-# ![Fibonacci  code](https://i.imgur.com/xvK1m5y.png)
+# ![Fibonacci  code](https://i.imgur.com/d7fSMp8.gif)
 
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;
@@ -388,117 +389,143 @@ console.log(fibonacci(10));
 
 ## Greedy Algorithms
 
-- Huffman coding is a lossless data compression algorithm that uses a greedy approach to construct a prefix code for a given set of symbols. It assigns variable-length codes to characters based on their frequency in the input data. The main idea is to give shorter codes to characters that appear more frequently and longer codes to characters that appear less often. This variable-length coding leads to a more efficient representation of the data during compression.
+- A greedy algorithm, aims to make the optimal choice at each step without considering the future steps. It focuses on finding the globally optimal solution locally, without looking ahead. This approach makes it fast but may not always result in the globally optimal solution. Greedy algorithms are used for various problems, including some well-known algorithms like Dijkstra's Algorithm, Kruskal's algorithm, Prim's algorithm, and Huffman trees.
 
-In other words, Huffman coding adapts its encoding scheme dynamically, tailoring it to the specific input data. Characters that occur more frequently, such as common letters in a text, are represented with shorter codes, reducing the overall size of the compressed data. On the contrary, less frequent characters, like rare symbols, receive longer codes, which may use more bits but are compensated by the savings achieved for frequently occurring characters.
+To create a greedy algorithm, you need to follow the principle of choosing the optimal choice at each moment in time. For example, when counting change, you start with the highest denomination and work backward to select the coins that fit the change amount.
 
-By constructing a prefix code, Huffman coding ensures that each code assigned to a character is not a prefix of another code, preventing ambiguity during decoding. This clever design guarantees that when the compressed data is decompressed, we get back the exact original data without any loss of information. Thus, Huffman coding achieves efficient data compression while preserving data integrity.
+Here's a brief summary of the key points for this algo:
+
+1. Greedy algorithms make locally optimal choices without considering future steps.
+2. Greedy algorithms aim to find the globally optimal solution using this local approach.
+3. Greedy algorithms are faster than alternatives like Divide & Conquer and Dynamic Programming.
+4. Some popular algorithms that use the greedy approach include Dijkstra's Algorithm, Kruskal's algorithm, Prim's algorithm, and Huffman trees.
+5. To create a greedy algorithm, follow the property of choosing the optimal choice at that exact moment in time.
+6. The example of counting change demonstrates how a greedy algorithm works by starting with the highest denomination and working backward.
+7. The provided Python code snippet demonstrates how to implement a greedy change-making algorithm.
+8. Greedy algorithms are optimal locally but may not always be optimal globally, as shown in the example where they fail to find the best solution.
+
+Remember that the runtime of a greedy algorithm is often dominated by the loops involved, making it O(n^2) in some cases. In situations where greedy algorithms fail to find the globally optimal solution, alternatives like Dynamic Programming may be necessary.
+
 </br>
 
-# ![Greedy code](https://i.imgur.com/xvK1m5y.png)
+ ![Greedy code](https://i.imgur.com/vByWfbI.gif)
 
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;
   color: #0a0a0a;
   ">
   <summary > <h3>Detailed explanation</h3> </summary>
-Huffman coding is a lossless data compression algorithm: Lossless means that when we compress the data using Huffman coding and then decompress it, we get back the exact same original data without any loss of information. In other words, no data is lost during the compression and decompression process.
 
-that uses a greedy algorithm: A greedy algorithm is a method that makes the best choice at each step, without worrying about the overall result. In the case of Huffman coding, the algorithm makes decisions by focusing on the most immediate benefit, which is assigning shorter codes to more frequently occurring characters.
+1. **Definition of Greedy Algorithms:** Greedy algorithms are a class of algorithms that make locally optimal choices at each step with the hope of finding the globally optimal solution. They follow the principle of immediate gratification, focusing on what seems best at the current moment without considering the consequences of those choices on future steps.
 
-to construct a prefix code for a given set of symbols: A prefix code is a type of encoding where no code word (sequence of bits) is a prefix of another code word. In simple terms, each character's code is not the starting part of another character's code. This is important to avoid any ambiguity when decoding the compressed data. The Huffman coding algorithm constructs such a prefix code for a set of symbols, where each symbol represents a character from the input data.
+2. **The Greedy Property:** The central idea behind greedy algorithms is the greedy property, which is defined as choosing the best option at that exact moment in time. This property guides the algorithm in making decisions, always selecting the most favorable choice available without foresight.
 
-Huffman coding assigns variable-length codes to characters based on their frequency in the input data: Instead of using fixed-length codes for each character (e.g., using 8 bits for each character), Huffman coding assigns shorter codes to characters that appear more frequently and longer codes to characters that appear less frequently. This dynamic assignment of code lengths allows more efficient compression because frequently occurring characters get shorter codes, reducing the overall size of the compressed data.
+3. **Speed and Efficiency:** Greedy algorithms are known for their speed and efficiency. They often outperform alternative approaches like Divide & Conquer and Dynamic Programming, especially in scenarios where the globally optimal solution can be approximated effectively using local decisions.
 
-Characters that occur more frequently are assigned shorter codes, while less frequent characters are assigned longer codes: This statement further emphasizes that Huffman coding adapts its encoding based on the frequency of characters in the input data. Popular characters, which occur more often, are represented using shorter codes, reducing the size of the compressed data. On the other hand, less frequent characters, which occur rarely, are represented using longer codes, which may use more bits but are offset by the savings achieved for frequently occurring characters.
+4. **Applications:** Greedy algorithms find applications in various fields, including computer science, mathematics, and engineering. Some well-known algorithms that employ the greedy approach include:
+   - Dijkstra's Algorithm for finding the shortest path in a graph.
+   - Kruskal's Algorithm for finding the minimum spanning tree of a graph.
+   - Prim's Algorithm for finding the minimum spanning tree of a weighted graph.
+   - Huffman Trees for data compression.
 
-Overall, Huffman coding is an intelligent data compression technique that efficiently represents data by assigning shorter codes to common characters and longer codes to less common characters, resulting in a compressed data representation without any loss of information during compression and decompression.
+5. **Designing Greedy Algorithms:** Creating a greedy algorithm involves defining the problem in such a way that you can identify the optimal choice at each step. This typically requires formulating the problem with specific constraints and objectives.
+
+6. **Example: Counting Change:** An illustrative example of a greedy algorithm is counting change. The algorithm starts with the highest denomination and works backward, selecting coins that fit the change amount until it can no longer use a particular coin. This approach often works well in practice, as it approximates the optimal solution effectively for everyday scenarios.
+
+7. **Algorithm Implementation:** The Python code snippet provided in the article demonstrates how to implement a greedy change-making algorithm. It uses a list to keep track of the number of each denomination of coins to return as change.
+
+8. **Optimality of Greedy Algorithms:** While greedy algorithms excel in many cases, they are not always guaranteed to find the globally optimal solution. The article highlights an example where a greedy change-making algorithm fails to identify the best solution. In such cases, alternatives like Dynamic Programming or brute-force approaches may be required.
+
+9. **Complexity:** The runtime complexity of a greedy algorithm often depends on the loops involved in the decision-making process. In some cases, it can be O(n^2) or worse. It's essential to analyze the specific algorithm and problem to determine its efficiency.
+
+10. **Trade-offs:** Greedy algorithms trade off computational efficiency for the possibility of suboptimal solutions. They are suitable for problems where approximation is acceptable and speed is critical, but they may not be suitable for problems where finding the globally optimal solution is essential.
+
+In summary, greedy algorithms are a powerful class of algorithms that make decisions based on local optimization, and they find use in a wide range of applications. While they are fast and efficient, it's crucial to be aware of their limitations and when they might not provide the best solution. In such cases, alternative algorithmic approaches should be considered.
 </details>
 
-### Below is an implementation of the Huffman coding algorithm in JavaScript
+### Below is an implementation of the Prim's algorithm in JavaScript
 
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;
   color: #0a0a0a;
   ">
-  <summary >Huffman Code</summary>
+  <summary >Prim's algorithm Code</summary>
   <pre style="padding: 1em 0em ">
   <code class="language-javascript">
-class Node {
-  constructor(char, freq) {
-    this.char = char;
-    this.freq = freq;
-    this.left = null;
-    this.right = null;
+class Graph {
+  constructor(vertices) {
+    this.vertices = vertices;
+    // Create an array to represent the graph, where each element is an adjacency list.
+    this.graph = new Array(vertices).fill(null).map(() => []);
   }
-}
-function buildFrequencyTable(str) {
-  const frequencyTable = {};
-  for (let char of str) {
-    frequencyTable[char] = (frequencyTable[char] || 0) + 1;
+  // Add an edge to the graph between source (src) and destination (dest) with a given weight.
+  addEdge(src, dest, weight) {
+    this.graph[src].push({ node: dest, weight });
+    this.graph[dest].push({ node: src, weight });
   }
-  return frequencyTable;
-}
-function buildHuffmanTree(frequencyTable) {
-  const priorityQueue = [];
-  for (let char in frequencyTable) {
-    const node = new Node(char, frequencyTable[char]);
-    priorityQueue.push(node);
-  }
-  priorityQueue.sort((a, b) => a.freq - b.freq);
-  while (priorityQueue.length > 1) {
-    const left = priorityQueue.shift();
-    const right = priorityQueue.shift();
-    const newNode = new Node(null, left.freq + right.freq);
-    newNode.left = left;
-    newNode.right = right;
-    priorityQueue.push(newNode);
-    priorityQueue.sort((a, b) => a.freq - b.freq);
-  }
-  return priorityQueue[0];
-}
-function buildHuffmanCodes(node, code = "", huffmanCodes = {}) {
-  if (node.char !== null) {
-    huffmanCodes[node.char] = code;
-  } else {
-    buildHuffmanCodes(node.left, code + "0", huffmanCodes);
-    buildHuffmanCodes(node.right, code + "1", huffmanCodes);
-  }
-  return huffmanCodes;
-}
-function huffmanEncode(str, huffmanCodes) {
-  let encodedStr = "";
-  for (let char of str) {
-    encodedStr += huffmanCodes[char];
-  }
-  return encodedStr;
-}
-function huffmanDecode(encodedStr, huffmanTree) {
-  let decodedStr = "";
-  let currentNode = huffmanTree;
-  for (let bit of encodedStr) {
-    if (bit === "0") {
-      currentNode = currentNode.left;
-    } else {
-      currentNode = currentNode.right;
+  // Function to find the Minimum Spanning Tree (MST) using Prim's algorithm.
+  primMST() {
+    const parent = new Array(this.vertices);
+    const key = new Array(this.vertices);
+    const visited = new Array(this.vertices).fill(false);
+    // Initialize key and parent arrays.
+    for (let i = 0; i < this.vertices; i++) {
+      key[i] = Number.MAX_VALUE;
+      visited[i] = false;
     }
-    if (currentNode.char !== null) {
-      decodedStr += currentNode.char;
-      currentNode = huffmanTree;
+    // Start from the first vertex.
+    key[0] = 0;
+    parent[0] = -1;
+    // Find the MST.
+    for (let count = 0; count < this.vertices - 1; count++) {
+      const u = this.minKey(key, visited);
+      visited[u] = true;
+      // Update key and parent for adjacent vertices.
+      for (const neighbor of this.graph[u]) {
+        const v = neighbor.node;
+        const weight = neighbor.weight;
+        if (!visited[v] && weight < key[v]) {
+          parent[v] = u;
+          key[v] = weight;
+        }
+      }
+    }
+    // Print the Minimum Spanning Tree.
+    this.printMST(parent);
+  }
+  // Helper function to find the vertex with the minimum key value among non-visited vertices.
+  minKey(key, visited) {
+    let min = Number.MAX_VALUE;
+    let minIndex = -1;
+    for (let v = 0; v < this.vertices; v++) {
+      if (!visited[v] && key[v] < min) {
+        min = key[v];
+        minIndex = v;
+      }
+    }
+    return minIndex;
+  }
+  // Function to print the edges of the Minimum Spanning Tree along with their weights.
+  printMST(parent) {
+    console.log("Edge \tWeight");
+    for (let i = 1; i < this.vertices; i++) {
+      console.log(`${parent[i]} - ${i} \t${this.graph[i][parent[i]].weight}`);
     }
   }
-  return decodedStr;
 }
-// Example usage:
-const inputString = "huffman coding example";
-const frequencyTable = buildFrequencyTable(inputString);
-const huffmanTree = buildHuffmanTree(frequencyTable);
-const huffmanCodes = buildHuffmanCodes(huffmanTree);
-const encodedString = huffmanEncode(inputString, huffmanCodes);
-const decodedString = huffmanDecode(encodedString, huffmanTree);
-console.log("Original string:", inputString);
-console.log("Encoded string:", encodedString);
-console.log("Decoded string:", decodedString);
+// Example usage
+const vertices = 5;
+const graph = new Graph(vertices);
+// Add edges and their weights to the graph.
+graph.addEdge(0, 1, 2);
+graph.addEdge(0, 3, 6);
+graph.addEdge(1, 2, 3);
+graph.addEdge(1, 3, 8);
+graph.addEdge(1, 4, 5);
+graph.addEdge(2, 4, 7);
+graph.addEdge(3, 4, 9);
+// Find and print the Minimum Spanning Tree.
+graph.primMST();
 </code></pre>
 </details>
 
@@ -524,7 +551,7 @@ In this implementation, we define a `Node` class to represent the nodes in the H
 - The N-Queens problem is a classic problem that can be solved using backtracking. The goal is to place N queens on an NxN chessboard in such a way that no queen can attack any other queen.
 </br>
 
-# ![The N-Queens code](https://i.imgur.com/xvK1m5y.png)
+ ![The N-Queens code](https://i.imgur.com/DFbPL8Y.gif)
 
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;
@@ -600,7 +627,7 @@ For each row, the number of valid positions decreases, which reduces the branchi
 - A variation of quicksort algorithm where pivot is chosen randomly.
 </br>
 
-# ![Randomized QuickSort code](https://i.imgur.com/xvK1m5y.png)
+ ![Randomized QuickSort code](https://i.imgur.com/sBfWYpl.gif)
 
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;

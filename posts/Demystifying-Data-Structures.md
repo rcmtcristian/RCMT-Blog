@@ -529,9 +529,6 @@ graph.primMST();
 </code></pre>
 </details>
 
-</br>
-
-In this implementation, we define a `Node` class to represent the nodes in the Huffman tree. The `buildFrequencyTable` function creates a frequency table based on the input string. The `buildHuffmanTree` function constructs the Huffman tree using a priority queue. The `buildHuffmanCodes` function recursively builds the Huffman codes for each character in the tree. The `huffmanEncode` function encodes the input string using the generated Huffman codes. The `huffmanDecode` function decodes the encoded string using the Huffman tree.
 
 </br>
 </br>

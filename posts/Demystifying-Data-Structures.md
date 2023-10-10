@@ -103,7 +103,6 @@ console.log(quicksort([3, 6, 8, 10, 1, 2, 1]));
 </br>
 
 # ![Merge Sort code](https://i.imgur.com/NOJFsRt.gif)
-
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;
   color: #0a0a0a;
@@ -414,7 +413,7 @@ Remember that the runtime of a greedy algorithm is often dominated by the loops 
   font-family: courier, monospace;
   color: #0a0a0a;
   ">
-  <summary > <h3>Detailed explanation</h3> </summary>
+  <summary > Detailed explanation</summary>
 
 1. **Definition of Greedy Algorithms:** Greedy algorithms are a class of algorithms that make locally optimal choices at each step with the hope of finding the globally optimal solution. They follow the principle of immediate gratification, focusing on what seems best at the current moment without considering the consequences of those choices on future steps.
 
@@ -715,7 +714,7 @@ These are some of the most commonly used algorithms that every programmer should
 ### Greedy algorithms:
 
 - Greedy algorithms are used to solve optimization problems by making the locally optimal choice at each step with the hope of finding a global optimum.
-- Huffman coding is a lossless data compression algorithm that uses a greedy algorithm to construct a prefix code for a given set of symbols.
+- Prim's Algorithm for finding the minimum spanning tree of a weighted graph.
 - It works by assigning shorter codes to more frequently occurring symbols.
 <br />
 

@@ -280,6 +280,11 @@ p {
   margin-bottom: 1em;
   font-size: 3em;
 }
+
+.mobileRedirect {
+  text-decoration: none;
+  color: #e7746f;
+}
 figure {
   margin: 0 0 3em 0;
   display: flex;

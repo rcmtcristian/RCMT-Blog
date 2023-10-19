@@ -1,6 +1,6 @@
 ---
 title:  Study Guide for beginner Level - three.js
-image: 8.gif
+image: 19.gif
 description: Three.js
 ---
 

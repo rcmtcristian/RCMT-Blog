@@ -388,7 +388,7 @@ console.log(fibonacci(10));
 
 ## Greedy Algorithms
 
-- A greedy algorithm, aims to make the optimal choice at each step without considering the future steps. It focuses on finding the globally optimal solution locally, without looking ahead. This approach makes it fast but may not always result in the globally optimal solution. Greedy algorithms are used for various problems, including some well-known algorithms like Dijkstra's Algorithm, Kruskal's algorithm, Prim's algorithm, and Huffman trees.
+- A greedy algorithm, aims to make the optimal choice at each step without considering the future steps. It focuses on finding the globally optimal solution locally, without looking ahead. This approach makes it fast but may not always result in the globally optimal solution. Greedy algorithms are used for various problems, including some well-known algorithms like Dijkstra's Algorithm, Kruskal's algorithm, A* algorithm, and Huffman trees.
 
 To create a greedy algorithm, you need to follow the principle of choosing the optimal choice at each moment in time. For example, when counting change, you start with the highest denomination and work backward to select the coins that fit the change amount.
 
@@ -431,100 +431,114 @@ Remember that the runtime of a greedy algorithm is often dominated by the loops 
 
 6. **Example: Counting Change:** An illustrative example of a greedy algorithm is counting change. The algorithm starts with the highest denomination and works backward, selecting coins that fit the change amount until it can no longer use a particular coin. This approach often works well in practice, as it approximates the optimal solution effectively for everyday scenarios.
 
-7. **Algorithm Implementation:** The Python code snippet provided in the article demonstrates how to implement a greedy change-making algorithm. It uses a list to keep track of the number of each denomination of coins to return as change.
+7. **Optimality of Greedy Algorithms:** While greedy algorithms excel in many cases, they are not always guaranteed to find the globally optimal solution. The article highlights an example where a greedy change-making algorithm fails to identify the best solution. In such cases, alternatives like Dynamic Programming or brute-force approaches may be required.
 
-8. **Optimality of Greedy Algorithms:** While greedy algorithms excel in many cases, they are not always guaranteed to find the globally optimal solution. The article highlights an example where a greedy change-making algorithm fails to identify the best solution. In such cases, alternatives like Dynamic Programming or brute-force approaches may be required.
+8. **Complexity:** The runtime complexity of a greedy algorithm often depends on the loops involved in the decision-making process. In some cases, it can be O(n^2) or worse. It's essential to analyze the specific algorithm and problem to determine its efficiency.
 
-9. **Complexity:** The runtime complexity of a greedy algorithm often depends on the loops involved in the decision-making process. In some cases, it can be O(n^2) or worse. It's essential to analyze the specific algorithm and problem to determine its efficiency.
-
-10. **Trade-offs:** Greedy algorithms trade off computational efficiency for the possibility of suboptimal solutions. They are suitable for problems where approximation is acceptable and speed is critical, but they may not be suitable for problems where finding the globally optimal solution is essential.
+9. **Trade-offs:** Greedy algorithms trade off computational efficiency for the possibility of suboptimal solutions. They are suitable for problems where approximation is acceptable and speed is critical, but they may not be suitable for problems where finding the globally optimal solution is essential.
 
 In summary, greedy algorithms are a powerful class of algorithms that make decisions based on local optimization, and they find use in a wide range of applications. While they are fast and efficient, it's crucial to be aware of their limitations and when they might not provide the best solution. In such cases, alternative algorithmic approaches should be considered.
 </details>
 
-### Below is an implementation of the Prim's algorithm in JavaScript
+### Below is an implementation of the A* (A Star) algorithm in JavaScript
+ ![A star](https://i.imgur.com/ig3FhGx.gif)
+A* can be considered a kind of greedy algorithm, but it's a "smart" or "informed" greedy algorithm. It's a bit more sophisticated than traditional greedy algorithms because it combines greedy principles with information from a heuristic function.
 
+In a traditional greedy algorithm, you always choose the locally optimal choice at each step without considering the bigger picture. A* is "greedy" in the sense that it focuses on the most promising path based on the heuristic estimate. It selects the next node to explore based on the sum of the cost to reach that node from the start and the estimated cost to reach the goal from that node.
+
+So, while A* makes locally optimal choices, it uses heuristics to make those choices smarter and more informed. It's designed to efficiently find the optimal path by prioritizing nodes that are likely to lead to the goal.
+
+In summary, A* is a kind of "greedy" algorithm, but it's enhanced by heuristics to make more intelligent decisions, which often leads to finding the optimal path more efficiently.
   <details style="background-color: #f1f3f5;
   font-family: courier, monospace;
   color: #0a0a0a;
   ">
-  <summary >Prim's algorithm Code</summary>
+  <summary >A* algorithm Code</summary>
   <pre style="padding: 1em 0em ">
   <code class="language-javascript">
-class Graph {
-  constructor(vertices) {
-    this.vertices = vertices;
-    // Create an array to represent the graph, where each element is an adjacency list.
-    this.graph = new Array(vertices).fill(null).map(() => []);
-  }
-  // Add an edge to the graph between source (src) and destination (dest) with a given weight.
-  addEdge(src, dest, weight) {
-    this.graph[src].push({ node: dest, weight });
-    this.graph[dest].push({ node: src, weight });
-  }
-  // Function to find the Minimum Spanning Tree (MST) using Prim's algorithm.
-  primMST() {
-    const parent = new Array(this.vertices);
-    const key = new Array(this.vertices);
-    const visited = new Array(this.vertices).fill(false);
-    // Initialize key and parent arrays.
-    for (let i = 0; i < this.vertices; i++) {
-      key[i] = Number.MAX_VALUE;
-      visited[i] = false;
-    }
-    // Start from the first vertex.
-    key[0] = 0;
-    parent[0] = -1;
-    // Find the MST.
-    for (let count = 0; count < this.vertices - 1; count++) {
-      const u = this.minKey(key, visited);
-      visited[u] = true;
-      // Update key and parent for adjacent vertices.
-      for (const neighbor of this.graph[u]) {
-        const v = neighbor.node;
-        const weight = neighbor.weight;
-        if (!visited[v] && weight < key[v]) {
-          parent[v] = u;
-          key[v] = weight;
-        }
-      }
-    }
-    // Print the Minimum Spanning Tree.
-    this.printMST(parent);
-  }
-  // Helper function to find the vertex with the minimum key value among non-visited vertices.
-  minKey(key, visited) {
-    let min = Number.MAX_VALUE;
-    let minIndex = -1;
-    for (let v = 0; v < this.vertices; v++) {
-      if (!visited[v] && key[v] < min) {
-        min = key[v];
-        minIndex = v;
-      }
-    }
-    return minIndex;
-  }
-  // Function to print the edges of the Minimum Spanning Tree along with their weights.
-  printMST(parent) {
-    console.log("Edge \tWeight");
-    for (let i = 1; i < this.vertices; i++) {
-      console.log(`${parent[i]} - ${i} \t${this.graph[i][parent[i]].weight}`);
-    }
+class Node {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.g = 0; // Cost from start node to this node
+    this.h = 0; // Heuristic (estimated cost from this node to the goal)
+    this.f = 0; // Total cost (f = g + h)
+    this.parent = null; // Parent node for tracing the path
   }
 }
-// Example usage
-const vertices = 5;
-const graph = new Graph(vertices);
-// Add edges and their weights to the graph.
-graph.addEdge(0, 1, 2);
-graph.addEdge(0, 3, 6);
-graph.addEdge(1, 2, 3);
-graph.addEdge(1, 3, 8);
-graph.addEdge(1, 4, 5);
-graph.addEdge(2, 4, 7);
-graph.addEdge(3, 4, 9);
-// Find and print the Minimum Spanning Tree.
-graph.primMST();
+function astar(grid, start, end) {
+  const openSet = [];
+  const closedSet = [];
+  openSet.push(start);
+  while (openSet.length > 0) {
+    let current = openSet[0];
+    let currentIndex = 0;
+    // Find the node with the lowest f value in the openSet
+    openSet.forEach((node, index) => {
+      if (node.f < current.f) {
+        current = node;
+        currentIndex = index;
+      }
+    });
+    // Remove the current node from the openSet
+    openSet.splice(currentIndex, 1);
+    // Add the current node to the closedSet
+    closedSet.push(current);
+    // If we reached the end, reconstruct the path and return it
+    if (current === end) {
+      const path = [];
+      let temp = current;
+      while (temp) {
+        path.push([temp.x, temp.y]);
+        temp = temp.parent;
+      }
+      return path.reverse();
+    }
+    const neighbors = [];
+    const { x, y } = current;
+    // Define the possible neighboring nodes (adjust for your grid structure)
+    if (grid[x - 1] && grid[x - 1][y]) neighbors.push(grid[x - 1][y]);
+    if (grid[x + 1] && grid[x + 1][y]) neighbors.push(grid[x + 1][y]);
+    if (grid[x][y - 1]) neighbors.push(grid[x][y - 1]);
+    if (grid[x][y + 1]) neighbors.push(grid[x][y + 1]);
+    neighbors.forEach((neighbor) => {
+      if (!closedSet.includes(neighbor)) {
+        const tempG = current.g + 1; // Assuming that the cost to move to a neighboring node is 1
+        if (!openSet.includes(neighbor) || tempG < neighbor.g) {
+          neighbor.g = tempG;
+          neighbor.h = heuristic(neighbor, end); // You need to define the heuristic function
+          neighbor.f = neighbor.g + neighbor.h;
+          neighbor.parent = current;
+          if (!openSet.includes(neighbor)) openSet.push(neighbor);
+        }
+      }
+    });
+  }
+  // If no path is found
+  return null;
+}
+function heuristic(nodeA, nodeB) {
+  // You need to define your heuristic function here (e.g., Manhattan distance)
+  return Math.abs(nodeA.x - nodeB.x) + Math.abs(nodeA.y - nodeB.y);
+}
+// Example usage:
+const gridSizeX = 5;
+const gridSizeY = 5;
+const grid = new Array(gridSizeX);
+for (let i = 0; i < gridSizeX; i++) {
+  grid[i] = new Array(gridSizeY);
+  for (let j = 0; j < gridSizeY; j++) {
+    grid[i][j] = new Node(i, j);
+  }
+}
+const startNode = grid[0][0];
+const endNode = grid[4][4];
+const path = astar(grid, startNode, endNode);
+if (path) {
+  console.log("Path found:", path);
+} else {
+  console.log("No path found.");
+}
 </code></pre>
 </details>
 

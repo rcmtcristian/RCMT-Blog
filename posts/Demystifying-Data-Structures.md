@@ -780,3 +780,4 @@ Sites used for visualizations:
 - [Pathfinding Visualizer by Clement Mihailescu](https://clementmihailescu.github.io/Pathfinding-Visualizer/#) - Pathfinding Visualizer by Clement Mihailescu
 - [CSVISTool](https://csvistool.com/) - CSVISTool website
 - [Algorithms Visualization by cs.usfca.edu](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html) - Algorithms Visualization by cs.usfca.edu
+- [**A* (A-Star) Pathfinding Algorithm Visualization on a Real Map**](https://www.youtube.com/watch?v=CgW0HPHqFE8) - A* (A-Star) Pathfinding Algorithm Visualization on a Real Map by ones and zeros

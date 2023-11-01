@@ -265,7 +265,7 @@ The example usage demonstrates searching for the target value 9 in the sorted ar
 
 Hash Tables
 
-A hash table is a fundamental data structure that plays a crucial role in many aspects of programming. To gain a deeper understanding of how it works and its practical applications, I highly recommend watching this informative v[video](https://www.youtube.com/watch?v=LPzN8jgbnvA).
+A hash table is a fundamental data structure that plays a crucial role in many aspects of programming. To gain a deeper understanding of how it works and its practical applications, I highly recommend watching this informative [video](https://www.youtube.com/watch?v=LPzN8jgbnvA).
 
 # ![Hash Tables code](https://i.imgur.com/DZrlIgL.gif)
 

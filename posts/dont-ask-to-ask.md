@@ -1,6 +1,6 @@
 ---
 title: Don't Ask to Ask, Just ask
-image: 15.gif
+image: 23.gif
 description: A Strategy for Success in Software Engineering. Part 2
 ---
 In some online chat rooms I frequent, there's a recurring issue where someone enters and asks,
